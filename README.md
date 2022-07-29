@@ -1,2 +1,2 @@
 # codbex-rhea
-Modelling and Application Generation Platform
+Modelling and Applications Generation Platform
