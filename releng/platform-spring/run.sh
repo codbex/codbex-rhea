@@ -1,0 +1,1 @@
+java -jar ./target/codbex-rhea-spring-0.1.0-SNAPSHOT.jar
