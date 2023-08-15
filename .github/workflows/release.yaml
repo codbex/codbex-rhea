@@ -1,0 +1,40 @@
+name: Release - Platform
+
+on:
+  workflow_dispatch:
+    inputs:
+      release-version:
+        description: Release Version
+        required: true
+        default: 1.0.0
+      snapshot-version:
+        description: Snapshot Version
+        required: true
+        default: 1.0.0-SNAPSHOT
+
+run-name: 'version set to ${{ inputs.release-version }} for release'
+
+jobs:
+  main:
+    uses: codbex/codbex-infra/.github/workflows/platform-release.yaml@main
+    with:
+      platform-name: codbex-rhea
+      release-version: ${{ inputs.release-version }}
+      snapshot-version: ${{ inputs.snapshot-version }}
+      release-content: |
+        ## codbex-rhea - ${{ inputs.release-version }}
+  
+        Modelling and Applications Generation Platform
+  
+        ## Deployment
+  
+        ```
+        docker run --name codbex-rhea \
+        --rm -p 8080:8080 -p 8081:8081 \
+        ghcr.io/codbex/codbex-rhea:${{ inputs.release-version }}
+        ```
+  
+        ## Access points:
+  
+        - [/services/web/ide/](http://localhost:8080/services/web/ide/) - Web IDE
+    secrets: inherit
