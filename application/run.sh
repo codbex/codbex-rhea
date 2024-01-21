@@ -1,0 +1,1 @@
+java -jar ./application/target/codbex-rhea-application-*.jar

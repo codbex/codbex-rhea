@@ -1,15 +1,45 @@
-⚠️ To be migrated to Eclipse Dirigible 8.x ⚠️
-
 # codbex-rhea
-Modelling and Applications Generation Platform
 
-### Best Practices
+Rhea Edition contains entity and forms modeling standard components.
 
-* Always have an `Id` property as primary key
-* Always have a `Name` property, could be in some cases plays as a compond key
-* For `Document` types of entities e.g. Order, Invoice, etc. use UUID calculated property (TODO: to be added by default)
-* Wherever needed use weak dependency via property `Reference` which holds the UUID of the referenced document
-* Always prefer a `type-safe` approach in modelling, e.g. having separate Customer and Supplier entities instead of a single Partner entity
-* Use CamelUpperCase for perspective names (no spaces in the keys)
-* Place Master-Details entities in a separate perspective
-* Use `Dropdown` widget for hard dependencies with `Id` and `Name` for `Dropdown key` and `Dropdown value` respectively
+It is good for Model Driven Architecture related development models.
+
+
+#### Docker
+
+```
+docker pull ghcr.io/codbex/codbex-rhea:latest
+docker run --name codbex-rhea --rm -p 80:80 ghcr.io/codbex/codbex-rhea:latest
+```
+
+- For Apple's M1: provide `--platform=linux/arm64` for better performance		
+
+#### Build
+
+```
+mvn clean install
+```
+	
+#### Run
+
+```
+java --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED -jar application/target/codbex-rhea-application-*.jar
+```
+
+#### Debug
+
+```
+java --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000 -jar application/target/codbex-rhea-application-*.jar
+```
+	
+#### Web
+
+```
+http://localhost
+```
+
+#### REST API
+
+```
+http://localhost/swagger-ui/index.html
+```
