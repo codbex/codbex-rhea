@@ -1,16 +1,9 @@
 # codbex-rhea
 
-<<<<<<< Upstream, based on branch 'main' of https://github.com/codbex/codbex-rhea.git
 Rhea Edition contains entity and forms modeling standard components.
-=======
-Rhea Edition contains all the available standard components.
->>>>>>> 3d57a11 refactored for dirigible 9.x
 
-<<<<<<< Upstream, based on branch 'main' of https://github.com/codbex/codbex-rhea.git
 It is good for Model Driven Architecture related development models.
-=======
-It is good for exploration about the different features and their applicability in particular scenarios.
->>>>>>> 3d57a11 refactored for dirigible 9.x
+
 
 
 #### Docker
