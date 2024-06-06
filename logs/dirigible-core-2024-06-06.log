@@ -1,0 +1,349 @@
+2024-06-06 13:32:52,329 INFO [main] o.e.d.c.b.e.EncryptionBeanPostProcessor [EncryptionBeanPostProcessor.java:67] Encryption has been successfully set up
+2024-06-06 13:32:53,682 INFO [main] o.e.d.c.c.StaticObjects [StaticObjects.java:97] Setting static object by key: REPOSITORY
+2024-06-06 13:32:54,739 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:103] Registered [15] synchronizers: [[org.eclipse.dirigible.components.extensions.synchronizer.ExtensionPointsSynchronizer@7c9e7e01, org.eclipse.dirigible.components.extensions.synchronizer.ExtensionsSynchronizer@7ece9a07, org.eclipse.dirigible.components.security.synchronizer.RoleSynchronizer@140f119d, org.eclipse.dirigible.components.security.synchronizer.AccessSynchronizer@4c2033b5, org.eclipse.dirigible.components.jobs.synchronizer.JobSynchronizer@3ca55fa, org.eclipse.dirigible.components.listeners.synchronizer.ListenerSynchronizer@10f31fb8, org.eclipse.dirigible.components.engine.web.synchronizer.ExposesSynchronizer@32cfe332, org.eclipse.dirigible.components.openapi.synchronizer.OpenAPISynchronizer@180b0347, org.eclipse.dirigible.components.websockets.synchronizer.WebsocketsSynchronizer@53627124, org.eclipse.dirigible.components.data.sources.synchronizer.DataSourcesSynchronizer@210d6df, org.eclipse.dirigible.components.data.structures.synchronizer.SchemasSynchronizer@bb59e72, org.eclipse.dirigible.components.data.structures.synchronizer.TablesSynchronizer@4f3bbeec, org.eclipse.dirigible.components.data.structures.synchronizer.ViewsSynchronizer@602b726c, org.eclipse.dirigible.components.data.store.synchronizer.EntitySynchronizer@7b0343f0, org.eclipse.dirigible.components.data.csvim.synchronizer.CsvimSynchronizer@3aafbad3]]
+2024-06-06 13:32:59,710 INFO [main] o.e.d.c.s.i.SystemRolesInitializer [SystemRolesInitializer.java:53] Executing...
+2024-06-06 13:32:59,913 INFO [main] o.e.d.c.s.i.SystemRolesInitializer [SystemRolesInitializer.java:85] Created system role [SecurityRole {id=1, location='SYSTEM_n/a', name='ROLE_ADMINISTRATOR', type='role', description='System role', key='role:SYSTEM_n/a:ROLE_ADMINISTRATOR', dependencies='null', createdBy=SYSTEM, createdAt=Thu Jun 06 13:32:59 UTC 2024, updatedBy=SYSTEM, updatedAt=Thu Jun 06 13:32:59 UTC 2024}].
+2024-06-06 13:32:59,920 INFO [main] o.e.d.c.s.i.SystemRolesInitializer [SystemRolesInitializer.java:85] Created system role [SecurityRole {id=2, location='SYSTEM_n/a', name='ROLE_DEVELOPER', type='role', description='System role', key='role:SYSTEM_n/a:ROLE_DEVELOPER', dependencies='null', createdBy=SYSTEM, createdAt=Thu Jun 06 13:32:59 UTC 2024, updatedBy=SYSTEM, updatedAt=Thu Jun 06 13:32:59 UTC 2024}].
+2024-06-06 13:32:59,925 INFO [main] o.e.d.c.s.i.SystemRolesInitializer [SystemRolesInitializer.java:85] Created system role [SecurityRole {id=3, location='SYSTEM_n/a', name='ROLE_OPERATOR', type='role', description='System role', key='role:SYSTEM_n/a:ROLE_OPERATOR', dependencies='null', createdBy=SYSTEM, createdAt=Thu Jun 06 13:32:59 UTC 2024, updatedBy=SYSTEM, updatedAt=Thu Jun 06 13:32:59 UTC 2024}].
+2024-06-06 13:32:59,926 INFO [main] o.e.d.c.s.i.SystemRolesInitializer [SystemRolesInitializer.java:59] Completed...
+2024-06-06 13:32:59,926 INFO [main] o.e.d.c.t.i.DefaultTenantInitializer [DefaultTenantInitializer.java:59] Executing...
+2024-06-06 13:32:59,956 INFO [main] o.e.d.c.t.i.DefaultTenantInitializer [DefaultTenantInitializer.java:84] Created default tenant [Tenant [id=default-tenant, subdomain=default, name=default-tenant, status=PROVISIONED]]
+2024-06-06 13:32:59,957 INFO [main] o.e.d.c.t.i.DefaultTenantInitializer [DefaultTenantInitializer.java:61] Completed...
+2024-06-06 13:32:59,957 INFO [main] o.e.d.c.t.i.AdminUserInitializer [AdminUserInitializer.java:79] Executing...
+2024-06-06 13:33:00,108 INFO [main] o.e.d.c.t.i.AdminUserInitializer [AdminUserInitializer.java:99] Created admin user with username [admin] for tenant with id [default-tenant]
+2024-06-06 13:33:00,118 INFO [main] o.e.d.c.t.i.AdminUserInitializer [AdminUserInitializer.java:119] Assigned role [ROLE_ADMINISTRATOR] to user [admin] in tenant [default-tenant]
+2024-06-06 13:33:00,123 INFO [main] o.e.d.c.t.i.AdminUserInitializer [AdminUserInitializer.java:119] Assigned role [ROLE_DEVELOPER] to user [admin] in tenant [default-tenant]
+2024-06-06 13:33:00,127 INFO [main] o.e.d.c.t.i.AdminUserInitializer [AdminUserInitializer.java:119] Assigned role [ROLE_OPERATOR] to user [admin] in tenant [default-tenant]
+2024-06-06 13:33:00,128 INFO [main] o.e.d.c.t.i.AdminUserInitializer [AdminUserInitializer.java:81] Completed.
+2024-06-06 13:33:00,128 INFO [main] o.e.d.c.i.s.SynchronizationInitializer [SynchronizationInitializer.java:63] Executing...
+2024-06-06 13:33:05,647 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-workspace-menu/extensions/workspace-menu-new-template-mjs.extension:workspace-menu-new-template-mjs
+2024-06-06 13:33:05,648 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/template-database-table/project.json:template-database-table
+2024-06-06 13:33:05,648 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/test/extensions/test.extension:test
+2024-06-06 13:33:05,648 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-import/project.json:ide-import
+2024-06-06 13:33:05,649 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-terminal/extensions/menu/terminal.extension:terminal
+2024-06-06 13:33:05,649 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-data-structures/extensions/view-editor.extension:view-editor
+2024-06-06 13:33:05,649 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/web-expose/artefacts-web-expose.extension:artefacts-web-expose
+2024-06-06 13:33:05,649 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide/extensions/workbench.extension:workbench
+2024-06-06 13:33:05,649 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-workspace-menu/extensions/workspace-menu-new-template-html.extension:workspace-menu-new-template-html
+2024-06-06 13:33:05,650 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-form-builder-menu/project.json:ide-form-builder-menu
+2024-06-06 13:33:05,650 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/portal/ui/launchpad/perspective.extensionpoint:portal
+2024-06-06 13:33:05,650 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-console/extensions/console.extension:console
+2024-06-06 13:33:05,650 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-jobs-menu/project.json:ide-jobs-menu
+2024-06-06 13:33:05,650 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-git-branches/extensions/git-branches-remote.extension:git-branches-remote
+2024-06-06 13:33:05,650 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-git/extensions/history-view.extension:history-view
+2024-06-06 13:33:05,651 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-git/extensions/menu/help.extension:help
+2024-06-06 13:33:05,651 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/portal/ui/launchpad/tile.extensionpoint:portal-tile
+2024-06-06 13:33:05,651 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/csvim/artefacts-csvim.extension:artefacts-csvim
+2024-06-06 13:33:05,651 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-jobs/extensions/job-logs.extension:job-logs
+2024-06-06 13:33:05,651 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/extensions/artefacts-extensions.extension:artefacts-extensions
+2024-06-06 13:33:05,652 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-security/extensions/access.extension:access
+2024-06-06 13:33:05,652 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/theme-quartz-dark/extensions/theme.extension:theme
+2024-06-06 13:33:05,652 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-extensions-menu/extensions/menu/workspace-menu-new-template-extensionpoint.extension:workspace-menu-new-template-extensionpoint
+2024-06-06 13:33:05,652 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-logs/extensions/logs.extension:logs
+2024-06-06 13:33:05,652 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-jobs-menu/extensions/workspace-menu-new-template-job.extension:workspace-menu-new-template-job
+2024-06-06 13:33:05,652 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-security/extensions/access-editor.extension:access-editor
+2024-06-06 13:33:05,653 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-properties/project.json:ide-properties
+2024-06-06 13:33:05,653 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/extensions/configurations.extension:configurations
+2024-06-06 13:33:05,653 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-form-builder/project.json:ide-form-builder
+2024-06-06 13:33:05,653 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/entities/artefacts-entities.extension:artefacts-entities
+2024-06-06 13:33:05,653 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-entity-menu/extensions/workspace-menu-new-template-edm.extension:workspace-menu-new-template-edm
+2024-06-06 13:33:05,654 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-debugger/extensions/menu/help.extension:help
+2024-06-06 13:33:05,654 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-terminal/extensions/terminal-view.extension:terminal-view
+2024-06-06 13:33:05,654 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/template-listener/template.extension:template
+2024-06-06 13:33:05,654 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-monaco-extensions/project.json:ide-monaco-extensions
+2024-06-06 13:33:05,654 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-jobs/extensions/job-trigger.extension:job-trigger
+2024-06-06 13:33:05,654 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/theme-quartz-light/project.json:theme-quartz-light
+2024-06-06 13:33:05,655 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/ide-workspace/ide-workspace-before-unpublish.extensionpoint:ide-workspace-before-unpublish
+2024-06-06 13:33:05,655 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-monaco/extensions/code-editor.extension:code-editor
+2024-06-06 13:33:05,655 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-logs/extensions/loggers.extension:loggers
+2024-06-06 13:33:05,655 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/template-hello-world/template.extension:template
+2024-06-06 13:33:05,655 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/odata-schema/artefacts-odata-schema.extension:artefacts-odata-schema
+2024-06-06 13:33:05,656 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/template-html/template.extension:template
+2024-06-06 13:33:05,656 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-logs/project.json:ide-logs
+2024-06-06 13:33:05,656 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-jobs/extensions/job-assign.extension:job-assign
+2024-06-06 13:33:05,656 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-actions-service/project.json:ide-actions-service
+2024-06-06 13:33:05,656 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-registry/extensions/workspace-after-publish.extension:workspace-after-publish
+2024-06-06 13:33:05,656 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-git/extensions/menu/window.extension:window
+2024-06-06 13:33:05,657 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/theme/project.json:theme
+2024-06-06 13:33:05,657 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-extensions/project.json:ide-extensions
+2024-06-06 13:33:05,657 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-entity/extensions/entity.extension:entity
+2024-06-06 13:33:05,657 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/odata-handler/artefacts-odata-handler.extension:artefacts-odata-handler
+2024-06-06 13:33:05,657 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/extensions/perspective.extension:perspective
+2024-06-06 13:33:05,657 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-extensions/extensions/extensions.extension:extensions
+2024-06-06 13:33:05,658 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/markdown/artefacts-markdown.extension:artefacts-markdown
+2024-06-06 13:33:05,658 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-listeners/extensions/listener-editor.extension:listener-editor
+2024-06-06 13:33:05,658 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/template-http-client/project.json:template-http-client
+2024-06-06 13:33:05,658 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-registry/extensions/registry-view.extension:registry-view
+2024-06-06 13:33:05,658 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/resources-core/extensions/editor.extensionpoint:ide-editor
+2024-06-06 13:33:05,658 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-search/project.json:ide-search
+2024-06-06 13:33:05,659 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/extensions/menu/window.extension:window
+2024-06-06 13:33:05,659 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-data-structures/project.json:ide-data-structures
+2024-06-06 13:33:05,659 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/openapi/artefacts-openapi.extension:artefacts-openapi
+2024-06-06 13:33:05,659 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/ide-workspace/ide-workspace-on-save.extensionpoint:ide-workspace-on-save
+2024-06-06 13:33:05,659 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/inbox/ui/launchpad/perspective.extension:perspective
+2024-06-06 13:33:05,660 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/inbox/ui/launchpad/view.extensionpoint:inbox-view
+2024-06-06 13:33:05,660 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/inbox/ui/launchpad/menu-help.extension:menu-help
+2024-06-06 13:33:05,660 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-jobs/project.json:ide-jobs
+2024-06-06 13:33:05,660 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: datasource:/datasources/DefaultDB.datasource:DefaultDB
+2024-06-06 13:33:05,660 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/template-http-client/template.extension:template
+2024-06-06 13:33:05,660 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/resources-core/extensions/subview.extensionpoint:ide-subview
+2024-06-06 13:33:05,661 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/ide-operations/services/artefacts/artefacts.extensionpoint:ide-operations-artefacts
+2024-06-06 13:33:05,661 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/template-database-table/template.extension:template
+2024-06-06 13:33:05,661 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide/project.json:ide
+2024-06-06 13:33:05,661 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-template-service/project.json:ide-template-service
+2024-06-06 13:33:05,661 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/portal/ui/launchpad/view.extensionpoint:portal-view
+2024-06-06 13:33:05,661 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/ide-monaco/api/extensions/fileTypes.extensionpoint:ide-file-types
+2024-06-06 13:33:05,662 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-repository/project.json:ide-repository
+2024-06-06 13:33:05,662 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-listeners/extensions/listeners.extension:listeners
+2024-06-06 13:33:05,662 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-security/extensions/roles-editor.extension:roles-editor
+2024-06-06 13:33:05,662 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/inbox/ui/launchpad/perspective.extensionpoint:inbox
+2024-06-06 13:33:05,662 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-import/extensions/import.extension:import
+2024-06-06 13:33:05,662 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/csv-file/artefacts-csv-file.extension:artefacts-csv-file
+2024-06-06 13:33:05,663 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-data-structures/extensions/tables.extension:tables
+2024-06-06 13:33:05,663 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/template-hello-world/project.json:template-hello-world
+2024-06-06 13:33:05,663 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/template-websocket/template.extension:template
+2024-06-06 13:33:05,663 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-terminal/project.json:ide-terminal
+2024-06-06 13:33:05,663 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/odata-container/artefacts-odata-container.extension:artefacts-odata-container
+2024-06-06 13:33:05,663 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-properties/extensions/properties.extension:properties
+2024-06-06 13:33:05,663 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/extensions/artefacts.extension:artefacts
+2024-06-06 13:33:05,664 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-terminal/extensions/menu/help.extension:help
+2024-06-06 13:33:05,664 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-csvim/project.json:ide-csvim
+2024-06-06 13:33:05,664 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-extensions/extensions/extension-editor.extension:extension-editor
+2024-06-06 13:33:05,664 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/csv/artefacts-csv.extension:artefacts-csv
+2024-06-06 13:33:05,664 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-csvim/extensions/csvim-editor.extension:csvim-editor
+2024-06-06 13:33:05,664 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-staging/extensions/git-projects.extension:git-projects
+2024-06-06 13:33:05,665 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-welcome/extensions/welcome.extension:welcome
+2024-06-06 13:33:05,665 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/security-roles/artefacts-security-roles.extension:artefacts-security-roles
+2024-06-06 13:33:05,665 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-git-branches/project.json:ide-git-branches
+2024-06-06 13:33:05,665 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/inbox/ui/launchpad/dialog-window.extensionpoint:inbox-dialog-window
+2024-06-06 13:33:05,665 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-operations/project.json:ide-operations
+2024-06-06 13:33:05,665 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/ide-jobs/extensions/menu/menu-jobs.extensionpoint:ide-jobs-menu
+2024-06-06 13:33:05,666 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-terminal/extensions/terminal-perspective.extension:terminal-perspective
+2024-06-06 13:33:05,666 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/qunit/extensions/qunit.extension:qunit
+2024-06-06 13:33:05,666 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/data-views/artefacts-data-views.extension:artefacts-data-views
+2024-06-06 13:33:05,666 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: access:/resources/resources.access:1
+2024-06-06 13:33:05,666 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-console/project.json:ide-console
+2024-06-06 13:33:05,667 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: access:/theme/public.access:1
+2024-06-06 13:33:05,667 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/qunit/project.json:qunit
+2024-06-06 13:33:05,667 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/bpmn/artefacts-bpmn.extension:artefacts-bpmn
+2024-06-06 13:33:05,667 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide/extensions/menu/file.extension:file
+2024-06-06 13:33:05,667 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/inbox/ui/launchpad/Home/view.extension:view
+2024-06-06 13:33:05,667 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-projects/extensions/projects.extension:projects
+2024-06-06 13:33:05,668 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-problems/extensions/problem-details.extension:problem-details
+2024-06-06 13:33:05,668 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-git-projects/project.json:ide-git-projects
+2024-06-06 13:33:05,668 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/theme-quartz-light/extensions/theme.extension:theme
+2024-06-06 13:33:05,668 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-data-structures/extensions/views.extension:views
+2024-06-06 13:33:05,668 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-publisher-service/project.json:ide-publisher-service
+2024-06-06 13:33:05,669 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/template-html/project.json:template-html
+2024-06-06 13:33:05,669 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/ide-workspace/ide-workspace-before-publish.extensionpoint:ide-workspace-before-publish
+2024-06-06 13:33:05,669 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/template-job/template.extension:template
+2024-06-06 13:33:05,669 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-preview/extensions/preview.extension:preview
+2024-06-06 13:33:05,669 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/websockets/artefacts-websockets.extension:artefacts-websockets
+2024-06-06 13:33:05,669 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-search/extensions/search.extension:search
+2024-06-06 13:33:05,669 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/resources-core/extensions/view.extensionpoint:ide-view
+2024-06-06 13:33:05,670 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-generate-service/project.json:ide-generate-service
+2024-06-06 13:33:05,670 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-about/project.json:ide-about
+2024-06-06 13:33:05,671 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/template-job/project.json:template-job
+2024-06-06 13:33:05,671 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-security-menu/project.json:ide-security-menu
+2024-06-06 13:33:05,671 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-jobs/extensions/menu/window.extension:window
+2024-06-06 13:33:05,671 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: access:/resources-core/resources-core.access:1
+2024-06-06 13:33:05,671 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/ide-monaco-extensions/extensions/api.extensionpoint:api-modules
+2024-06-06 13:33:05,672 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/ide-operations/extensions/menu/menu-extensions.extensionpoint:ide-operations-menu
+2024-06-06 13:33:05,672 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-import/extensions/import-dialog.extension:import-dialog
+2024-06-06 13:33:05,672 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-security-menu/extensions/workspace-menu-new-template-access.extension:workspace-menu-new-template-access
+2024-06-06 13:33:05,672 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-registry/project.json:ide-registry
+2024-06-06 13:33:05,672 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-transport-service/project.json:ide-transport-service
+2024-06-06 13:33:05,672 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/inbox/ui/launchpad/menu.extensionpoint:inbox-menu
+2024-06-06 13:33:05,673 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-about/extensions/about-dialog.extension:about-dialog
+2024-06-06 13:33:05,673 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-image/extensions/image-editor.extension:image-editor
+2024-06-06 13:33:05,673 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-jobs/extensions/jobs-perspective.extension:jobs-perspective
+2024-06-06 13:33:05,673 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-git/project.json:ide-git
+2024-06-06 13:33:05,673 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/theme-quartz-dark/project.json:theme-quartz-dark
+2024-06-06 13:33:05,673 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-git-service/project.json:ide-git-service
+2024-06-06 13:33:05,674 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/resources/project.json:resources
+2024-06-06 13:33:05,674 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-monaco/project.json:ide-monaco
+2024-06-06 13:33:05,674 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-git-branches/extensions/git-branches-local.extension:git-branches-local
+2024-06-06 13:33:05,674 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-monaco/api/extensions/coreFileTypes.extension:coreFileTypes
+2024-06-06 13:33:05,674 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-repository-service/project.json:ide-repository-service
+2024-06-06 13:33:05,674 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-jobs/extensions/menu/help.extension:help
+2024-06-06 13:33:05,675 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-jobs/extensions/job-editor.extension:job-editor
+2024-06-06 13:33:05,675 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/ide-terminal/extensions/menu/menu-terminal.extensionpoint:ide-terminal-menu
+2024-06-06 13:33:05,675 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/data-tables/artefacts-data-tables.extension:artefacts-data-tables
+2024-06-06 13:33:05,675 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-preview/project.json:ide-preview
+2024-06-06 13:33:05,675 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-swagger/project.json:ide-swagger
+2024-06-06 13:33:05,675 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/theme/extensions/theme.extensionpoint:ide-themes
+2024-06-06 13:33:05,676 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide/extensions/menu/window.extension:window
+2024-06-06 13:33:05,676 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-result/project.json:ide-result
+2024-06-06 13:33:05,676 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-jobs/extensions/jobs.extension:jobs
+2024-06-06 13:33:05,676 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-swagger/extensions/openapi.extension:openapi
+2024-06-06 13:33:05,676 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-git/extensions/git-perspective.extension:git-perspective
+2024-06-06 13:33:05,676 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-entity-menu/project.json:ide-entity-menu
+2024-06-06 13:33:05,677 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-listeners-menu/project.json:ide-listeners-menu
+2024-06-06 13:33:05,677 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide/extensions/menu/help.extension:help
+2024-06-06 13:33:05,677 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-monaco/extensions/diff-view.extension:diff-view
+2024-06-06 13:33:05,677 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-security-menu/extensions/workspace-menu-new-template-roles.extension:workspace-menu-new-template-roles
+2024-06-06 13:33:05,677 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-debugger/extensions/perspective.extension:perspective
+2024-06-06 13:33:05,678 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/security-access/artefacts-security-access.extension:artefacts-security-access
+2024-06-06 13:33:05,678 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-form-builder-menu/extensions/workspace-menu-new-template-form.extension:workspace-menu-new-template-form
+2024-06-06 13:33:05,678 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/resources-core/project.json:resources-core
+2024-06-06 13:33:05,678 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-workspace-menu/project.json:ide-workspace-menu
+2024-06-06 13:33:05,678 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-security/extensions/roles.extension:roles
+2024-06-06 13:33:05,679 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-entity/extensions/details-window.extension:details-window
+2024-06-06 13:33:05,679 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/portal/ui/launchpad/perspective.extension:perspective
+2024-06-06 13:33:05,679 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/template-database-view/project.json:template-database-view
+2024-06-06 13:33:05,679 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/ide-workspace/ide-workspace-after-publish.extensionpoint:ide-workspace-after-publish
+2024-06-06 13:33:05,679 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/theme-default/project.json:theme-default
+2024-06-06 13:33:05,680 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-form-builder/extensions/editor.extension:editor
+2024-06-06 13:33:05,680 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-staging/project.json:ide-staging
+2024-06-06 13:33:05,680 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-git-projects/extensions/git-projects.extension:git-projects
+2024-06-06 13:33:05,680 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/confluence/artefacts-confluence.extension:artefacts-confluence
+2024-06-06 13:33:05,680 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-projects/project.json:ide-projects
+2024-06-06 13:33:05,680 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/data-sources/artefacts-data-sources.extension:artefacts-data-sources
+2024-06-06 13:33:05,681 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-listeners-menu/extensions/workspace-menu-new-template-listener.extension:workspace-menu-new-template-listener
+2024-06-06 13:33:05,681 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-registry-service/project.json:ide-registry-service
+2024-06-06 13:33:05,681 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/template-database-access/project.json:template-database-access
+2024-06-06 13:33:05,681 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/odata/artefacts-odata.extension:artefacts-odata
+2024-06-06 13:33:05,681 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/test/project.json:test
+2024-06-06 13:33:05,681 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/modules/project.json:modules
+2024-06-06 13:33:05,681 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-branding/project.json:ide-branding
+2024-06-06 13:33:05,682 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/camel/artefacts-camel.extension:artefacts-camel
+2024-06-06 13:33:05,682 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-welcome/project.json:ide-welcome
+2024-06-06 13:33:05,682 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-debugger/project.json:ide-debugger
+2024-06-06 13:33:05,682 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/data-schemas/artefacts-data-schemas.extension:artefacts-data-schemas
+2024-06-06 13:33:05,682 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-entity/extensions/workspace-on-save.extension:workspace-on-save
+2024-06-06 13:33:05,683 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-csv/project.json:ide-csv
+2024-06-06 13:33:05,683 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-entity/project.json:ide-entity
+2024-06-06 13:33:05,683 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/odata-mapping/artefacts-odata-mapping.extension:artefacts-odata-mapping
+2024-06-06 13:33:05,683 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/extension-points/artefacts-extension-points.extension:artefacts-extension-points
+2024-06-06 13:33:05,684 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-image/project.json:ide-image
+2024-06-06 13:33:05,684 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/template-websocket/project.json:template-websocket
+2024-06-06 13:33:05,684 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-security/project.json:ide-security
+2024-06-06 13:33:05,684 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-extensions-menu/extensions/menu/workspace-menu-new-template-extension.extension:workspace-menu-new-template-extension
+2024-06-06 13:33:05,684 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-problems/project.json:ide-problems
+2024-06-06 13:33:05,684 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/portal/ui/launchpad/menu-help.extension:menu-help
+2024-06-06 13:33:05,685 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/portal/ui/launchpad/Home/view.extension:view
+2024-06-06 13:33:05,685 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/resources-core/extensions/dialog-window.extensionpoint:ide-dialog-window
+2024-06-06 13:33:05,685 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: datasource:/datasources/SystemDB.datasource:SystemDB
+2024-06-06 13:33:05,685 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-extensions/extensions/extensionpoint-editor.extension:extensionpoint-editor
+2024-06-06 13:33:05,685 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-debugger/extensions/views/debugger.extension:debugger
+2024-06-06 13:33:05,685 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/ide-workspace/ide-workspace-after-unpublish.extensionpoint:ide-workspace-after-unpublish
+2024-06-06 13:33:05,686 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/template-database-view/template.extension:template
+2024-06-06 13:33:05,686 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/template-database-access/template.extension:template
+2024-06-06 13:33:05,686 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/extensions/menu/help.extension:help
+2024-06-06 13:33:05,686 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/portal/ui/launchpad/dialog-window.extensionpoint:portal-dialog-window
+2024-06-06 13:33:05,686 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-registry/extensions/workspace-after-unpublish.extension:workspace-after-unpublish
+2024-06-06 13:33:05,686 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-workspace-service/project.json:ide-workspace-service
+2024-06-06 13:33:05,687 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-extensions-menu/project.json:ide-extensions-menu
+2024-06-06 13:33:05,687 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/ide-debugger/extensions/menu/menu-debugger.extensionpoint:ide-debugger-menu
+2024-06-06 13:33:05,687 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/listeners/artefacts-listeners.extension:artefacts-listeners
+2024-06-06 13:33:05,687 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/ide-git/extensions/menu/menu-git.extensionpoint:ide-git-menu
+2024-06-06 13:33:05,687 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-repository/extensions/repository.extension:repository
+2024-06-06 13:33:05,687 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/portal/ui/launchpad/menu.extensionpoint:portal-menu
+2024-06-06 13:33:05,688 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/resources-core/extensions/template.extensionpoint:ide-template
+2024-06-06 13:33:05,688 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/theme-default/extensions/theme.extension:theme
+2024-06-06 13:33:05,688 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/template-listener/project.json:template-listener
+2024-06-06 13:33:05,688 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/resources-core/extensions/perspective.extensionpoint:ide-perspective
+2024-06-06 13:33:05,688 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-entity/extensions/nav-details-window.extension:nav-details-window
+2024-06-06 13:33:05,689 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-entity/extensions/reference-window.extension:reference-window
+2024-06-06 13:33:05,689 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/resources-core/extensions/menu.extensionpoint:ide-menu
+2024-06-06 13:33:05,689 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-entity/extensions/transformer.extension:transformer
+2024-06-06 13:33:05,689 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-csv/extensions/csv-editor.extension:csv-editor
+2024-06-06 13:33:05,689 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-listeners/project.json:ide-listeners
+2024-06-06 13:33:05,690 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-problems/extensions/problems.extension:problems
+2024-06-06 13:33:05,690 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: expose:/ide-bpm/project.json:ide-bpm
+2024-06-06 13:33:05,690 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extensionpoint:/inbox/ui/launchpad/tile.extensionpoint:inbox-tile
+2024-06-06 13:33:05,690 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-workspace-menu/extensions/workspace-menu-new-template-ts.extension:workspace-menu-new-template-ts
+2024-06-06 13:33:05,690 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-debugger/extensions/menu/window.extension:window
+2024-06-06 13:33:05,690 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-result/extensions/result.extension:result
+2024-06-06 13:33:05,691 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-operations/services/artefacts/jobs/artefacts-jobs.extension:artefacts-jobs
+2024-06-06 13:33:05,691 INFO [main] o.e.d.c.i.s.SynchronizationProcessor [SynchronizationProcessor.java:197] Processing a new artefact: extension:/ide-data-structures/extensions/table-editor.extension:table-editor
+2024-06-06 13:33:06,018 INFO [main] o.e.d.c.i.s.SynchronizationInitializer [SynchronizationInitializer.java:70] Completed.
+2024-06-06 13:33:06,019 INFO [main] o.e.d.c.j.i.JobsInitializer [JobsInitializer.java:58] Initializing [2] jobs: [org.eclipse.dirigible.components.initializers.synchronizer.SynchronizationJob@65d65c56, org.eclipse.dirigible.components.tenants.provisioning.TenantProvisioningJob@3ab83e1a]}
+2024-06-06 13:33:06,021 INFO [main] o.e.d.c.i.s.SynchronizationJob [SynchronizationJob.java:64] Configuring trigger to fire every [10] seconds
+2024-06-06 13:33:06,025 INFO [main] o.e.d.c.j.i.JobsInitializer [JobsInitializer.java:80] Scheduled job [JobDetail 'system.SynchronizationJobDetail':  jobClass: 'org.eclipse.dirigible.components.initializers.synchronizer.SynchronizationJob concurrentExectionDisallowed: false persistJobDataAfterExecution: false isDurable: true requestsRecovers: true] with trigger [Trigger 'system.SynchronizationJobTrigger':  triggerClass: 'org.quartz.impl.triggers.SimpleTriggerImpl calendar: 'null' misfireInstruction: 5 nextFireTime: Thu Jun 06 13:33:06 UTC 2024]
+2024-06-06 13:33:06,026 INFO [main] o.e.d.c.t.p.TenantProvisioningJob [TenantProvisioningJob.java:70] Configuring tenant provisioning job to fire every [900] seconds
+2024-06-06 13:33:06,026 INFO [main] o.e.d.c.j.i.JobsInitializer [JobsInitializer.java:80] Scheduled job [JobDetail 'system.TenantsProvisioningJob':  jobClass: 'org.eclipse.dirigible.components.tenants.provisioning.TenantProvisioningJob concurrentExectionDisallowed: false persistJobDataAfterExecution: false isDurable: true requestsRecovers: true] with trigger [Trigger 'system.TenantsProvisioningJobTrigger':  triggerClass: 'org.quartz.impl.triggers.SimpleTriggerImpl calendar: 'null' misfireInstruction: 5 nextFireTime: Thu Jun 06 13:33:06 UTC 2024]
+2024-06-06 13:33:06,026 INFO [main] o.e.d.c.j.i.JobsInitializer [JobsInitializer.java:62] Completed.
+2024-06-06 13:33:06,990 INFO [SpringApplicationShutdownHook] o.e.d.c.l.c.CloseActiveMQResourcesApplicationListener [CloseActiveMQResourcesApplicationListener.java:100] Closing ActiveMQ resources due to event org.springframework.context.event.ContextClosedEvent[source=org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6b063470, started on Thu Jun 06 13:32:44 UTC 2024]
+2024-06-06 13:33:06,991 INFO [SpringApplicationShutdownHook] o.e.d.c.l.s.ListenersManager [ListenersManager.java:98] Stopping all background listeners...
+2024-06-06 13:33:06,999 ERROR [ActiveMQ Connection Executor: vm://localhost#0] o.e.d.c.l.c.LoggingExceptionListener [LoggingExceptionListener.java:38] Exception occur
+jakarta.jms.JMSException: peer (vm://localhost#1) stopped.
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:67) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.apache.activemq.ActiveMQConnection.onAsyncException(ActiveMQConnection.java:2033) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.apache.activemq.ActiveMQConnection.onException(ActiveMQConnection.java:2052) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.apache.activemq.transport.TransportFilter.onException(TransportFilter.java:114) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.apache.activemq.transport.ResponseCorrelator.onException(ResponseCorrelator.java:126) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.apache.activemq.transport.TransportFilter.onException(TransportFilter.java:114) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:233) ~[activemq-broker-6.1.0.jar:6.1.0]
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1204) ~[activemq-broker-6.1.0.jar:6.1.0]
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1170) ~[activemq-broker-6.1.0.jar:6.1.0]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1623) ~[na:na]
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://localhost#1) stopped.
+	... 9 common frames omitted
+2024-06-06 13:33:06,997 WARN [SpringApplicationShutdownHook] o.e.d.c.l.c.CloseActiveMQResourcesApplicationListener [CloseActiveMQResourcesApplicationListener.java:125] Failed to close session [ActiveMQSession {id=ID:fv-az1198-814-42321-1717680775048-4:1:1,started=true,closed=true} java.lang.Object@207a9725]
+jakarta.jms.JMSException: Peer (vm://localhost#1) disposed.
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:91) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.apache.activemq.ActiveMQConnection.doAsyncSendPacket(ActiveMQConnection.java:1373) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.apache.activemq.ActiveMQConnection.asyncSendPacket(ActiveMQConnection.java:1365) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.apache.activemq.ActiveMQSession.doClose(ActiveMQSession.java:669) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.apache.activemq.ActiveMQSession.close(ActiveMQSession.java:660) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.eclipse.dirigible.components.listeners.config.CloseActiveMQResourcesApplicationListener.closeSession(CloseActiveMQResourcesApplicationListener.java:123) ~[dirigible-components-engine-listeners-10.5.5.jar:na]
+	at org.eclipse.dirigible.components.listeners.config.CloseActiveMQResourcesApplicationListener.closeResources(CloseActiveMQResourcesApplicationListener.java:102) ~[dirigible-components-engine-listeners-10.5.5.jar:na]
+	at org.eclipse.dirigible.components.listeners.config.CloseActiveMQResourcesApplicationListener.onApplicationEvent(CloseActiveMQResourcesApplicationListener.java:80) ~[dirigible-components-engine-listeners-10.5.5.jar:na]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:185) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:178) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:156) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:451) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:384) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1130) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1093) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:145) ~[spring-boot-3.2.5.jar:3.2.5]
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[na:na]
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:114) ~[spring-boot-3.2.5.jar:3.2.5]
+	at java.base/java.lang.Thread.run(Thread.java:1623) ~[na:na]
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: Peer (vm://localhost#1) disposed.
+	at org.apache.activemq.transport.vm.VMTransport.oneway(VMTransport.java:94) ~[activemq-broker-6.1.0.jar:6.1.0]
+	at org.apache.activemq.transport.MutexTransport.oneway(MutexTransport.java:68) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.apache.activemq.transport.ResponseCorrelator.oneway(ResponseCorrelator.java:60) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.apache.activemq.ActiveMQConnection.doAsyncSendPacket(ActiveMQConnection.java:1371) ~[activemq-client-6.1.0.jar:6.1.0]
+	... 18 common frames omitted
+2024-06-06 13:33:07,001 WARN [SpringApplicationShutdownHook] o.e.d.c.l.c.CloseActiveMQResourcesApplicationListener [CloseActiveMQResourcesApplicationListener.java:136] Failed to close connection [ActiveMQConnection {id=ID:fv-az1198-814-42321-1717680775048-4:1,clientId=ID:fv-az1198-814-42321-1717680775048-3:1,started=false}]
+jakarta.jms.JMSException: Disposed due to prior exception
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:91) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.apache.activemq.ActiveMQConnection.syncSendPacket(ActiveMQConnection.java:1483) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.apache.activemq.ActiveMQConnection.close(ActiveMQConnection.java:729) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.eclipse.dirigible.components.listeners.config.CloseActiveMQResourcesApplicationListener.closeConnection(CloseActiveMQResourcesApplicationListener.java:134) ~[dirigible-components-engine-listeners-10.5.5.jar:na]
+	at org.eclipse.dirigible.components.listeners.config.CloseActiveMQResourcesApplicationListener.closeResources(CloseActiveMQResourcesApplicationListener.java:103) ~[dirigible-components-engine-listeners-10.5.5.jar:na]
+	at org.eclipse.dirigible.components.listeners.config.CloseActiveMQResourcesApplicationListener.onApplicationEvent(CloseActiveMQResourcesApplicationListener.java:80) ~[dirigible-components-engine-listeners-10.5.5.jar:na]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:185) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:178) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:156) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:451) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:384) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1130) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1093) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:145) ~[spring-boot-3.2.5.jar:3.2.5]
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[na:na]
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:114) ~[spring-boot-3.2.5.jar:3.2.5]
+	at java.base/java.lang.Thread.run(Thread.java:1623) ~[na:na]
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: Disposed due to prior exception
+	at org.apache.activemq.transport.ResponseCorrelator.onException(ResponseCorrelator.java:125) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.apache.activemq.transport.TransportFilter.onException(TransportFilter.java:114) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:233) ~[activemq-broker-6.1.0.jar:6.1.0]
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132) ~[activemq-client-6.1.0.jar:6.1.0]
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1204) ~[activemq-broker-6.1.0.jar:6.1.0]
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1170) ~[activemq-broker-6.1.0.jar:6.1.0]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	... 1 common frames omitted
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://localhost#1) stopped.
+	... 9 common frames omitted
