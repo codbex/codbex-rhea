@@ -3,7 +3,7 @@ name: codbex-rhea
 image:
   registry: ghcr.io
   repository: codbex/codbex-rhea
-  tag: 1.2.0
+  tag: 1.3.0
   pullPolicy: Always # Always or IfNotPresent
 
 service:
