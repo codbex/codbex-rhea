@@ -3,13 +3,8 @@
 ```shell
 export KUBECONFIG='<path-to-your-kubeconfig>'
 export GIT_REPO='<path-to-your-git-repo>'
-export RELEASE_NAME='my-codbex-helios'
+export RELEASE_NAME='my-codbex-rhea'
 export NAMESPACE='default'
-
-# Iliyan's config
-export GIT_REPO='/Users/iliyan/work/git/codbex-helios'
-export KUBECONFIG='/Users/iliyan/work/work-share/projects/open-telekom-cloud/marketplace/otc-deployment/kubeconfig-marketplace-app-testing.yaml'
-export NAMESPACE='iliyan'
 
 export CHART_FOLDER="$GIT_REPO/helm/otc"
 
@@ -31,14 +26,14 @@ helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --create-namespace 
 
 # Install from OCI
-helm install $RELEASE_NAME oci://ghcr.io/codbex/helm/codbex-helios-1.24.0-otc/codbex-helios --version 1.24.0 --atomic --timeout 2m0s
+helm install $RELEASE_NAME oci://ghcr.io/codbex/helm/codbex-rhea-1.24.0-otc/codbex-rhea --version 1.24.0 --atomic --timeout 2m0s
 
 # Upgrade
 helm upgrade $RELEASE_NAME . --install --atomic \
   --wait --namespace $NAMESPACE --create-namespace 
 
 # Upgrade from URL
-CHART_URL='https://github.com/codbex/codbex-helios/releases/download/v1.20.0/codbex-helios-1.20.0-otc.tgz'
+CHART_URL='https://github.com/codbex/codbex-rhea/releases/download/v1.20.0/codbex-rhea-1.20.0-otc.tgz'
 helm upgrade $RELEASE_NAME "$CHART_URL" --install --atomic \
   --wait --namespace $NAMESPACE --create-namespace 
 

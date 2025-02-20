@@ -45,7 +45,7 @@ spec:
         {{- end }}
         env:
         - name: DIRIGIBLE_BASIC_USERNAME
-          value: {{ .Values.helios.admin.base64User | quote }}
+          value: {{ .Values.rhea.admin.base64User | quote }}
         - name: DIRIGIBLE_BASIC_PASSWORD
-          value: {{ .Values.helios.admin.base64Pass | quote }}
+          value: {{ .Values.rhea.admin.base64Pass | quote }}
 

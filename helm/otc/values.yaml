@@ -1,9 +1,9 @@
-name: codbex-helios
+name: codbex-rhea
 
 image:
   registry: ghcr.io
-  repository: codbex/codbex-helios
-  tag: 1.27.0
+  repository: codbex/codbex-rhea
+  tag: 1.2.0
   pullPolicy: Always # Always or IfNotPresent
 
 service:
@@ -37,7 +37,7 @@ volume:
   storage: 2Gi
   storageClassName: ssd
 
-helios:
+rhea:
   admin:
     base64User: YWRtaW4= # base64 encoded `admin`
     base64Pass: YWRtaW4= # base64 encoded `admin`

@@ -23,4 +23,4 @@ APP VERSION: {{ .Chart.AppVersion }}
 1. To access the application, open URL http://<elb-ip>:{{ .Values.ingress.port }}{{ .Values.ingress.path }} where <elb-ip> is the IP address of used OTC Elastic Load Balancer.
 {{- end }}
 
-    NOTE: Default credentials are username `admin` and password `admin`, unless you have specified custom credentials via `helios.admin.base64User` and `helios.admin.base64Pass`.
+    NOTE: Default credentials are username `admin` and password `admin`, unless you have specified custom credentials via `rhea.admin.base64User` and `rhea.admin.base64Pass`.
