@@ -8,7 +8,7 @@ spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: {{ .Values.name }}{{ .Test.Values.test }}
+      app: {{ .Values.name }}
   strategy:
     rollingUpdate:
       maxSurge: 25%
