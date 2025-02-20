@@ -1,0 +1,19 @@
+annotations:
+  category: Web IDE
+apiVersion: v2
+name: codbex-rhea
+version: 2.0.0-SNAPSHOT
+appVersion: 2.0.0-SNAPSHOT
+description: https://codbex.com/products/rhea
+home: https://github.com/codbex/codbex-rhea
+keywords:
+- low-code-platform
+- ide
+- web-ide
+- type-script
+- java-script
+maintainers:
+- name: codbex
+  url: https://github.com/codbex
+sources:
+- https://github.com/codbex/codbex-rhea
