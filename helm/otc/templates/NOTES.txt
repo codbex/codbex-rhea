@@ -5,7 +5,7 @@ APP VERSION: {{ .Chart.AppVersion }}
 
 ** Please be patient while the chart is being deployed **
 
-{{- if and .Values.ingress.enabled .Values.ingress.elb.autocreate }}
+{{- if and .Values.ingress.enabled .Values.ingress.otc.autocreate }}
 1. Get the application URL by running:
 
     export ELB_IP=$(kubectl get ingress {{ .Values.name }}-ingress -o jsonpath='{.metadata.annotations.kubernetes\.io/elb\.ip}' -n {{ .Release.Namespace }})
@@ -19,7 +19,7 @@ APP VERSION: {{ .Chart.AppVersion }}
     echo "App URL: http://$ELB_IP:{{ .Values.service.ports.http }}"
 {{- end }}
 
-{{- if not .Values.ingress.elb.autocreate }}
+{{- if not .Values.ingress.otc.autocreate }}
 1. To access the application, open URL http://<elb-ip>:{{ .Values.ingress.port }}{{ .Values.ingress.path }} where <elb-ip> is the IP address of used OTC Elastic Load Balancer.
 {{- end }}
 
