@@ -45,6 +45,10 @@ helm upgrade $RELEASE_NAME "$CHART_URL" --install --atomic \
 helm install $RELEASE_NAME . --set volume.enabled=false \
   --wait --namespace $NAMESPACE
 
+## Install with nginx ingress
+helm install $RELEASE_NAME . --set ingress.nginx.enabled=true \
+  --wait --namespace $NAMESPACE
+
 ## Install with modified base path
 helm install $RELEASE_NAME . --set ingress.path=/my-path \
   --wait --namespace $NAMESPACE

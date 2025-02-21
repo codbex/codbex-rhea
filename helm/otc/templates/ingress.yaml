@@ -6,24 +6,30 @@ metadata:
   name: {{ .Values.name }}-ingress
   annotations:
     kubernetes.io/elb.port: {{ .Values.ingress.port | quote }}
-    {{- if .Values.ingress.elb.autocreate }}
+    {{- if and .Values.ingress.enabled .Values.ingress.otc.autocreate }}
     kubernetes.io/elb.class: union
     kubernetes.io/elb.autocreate:
       '{
           "name":"{{ .Values.name }}-elb",
           "type":"public",
-          "bandwidth_name":"codbex-rhea-bandwidth",
+          "bandwidth_name":"codbex-helios-bandwidth",
           "bandwidth_chargemode":"traffic",
           "bandwidth_size":5,
           "bandwidth_sharetype":"PER",
           "eip_type":"5_bgp"
         }'
     {{- end }}
-    {{- if not .Values.ingress.elb.autocreate }}
-    kubernetes.io/elb.id: {{ .Values.ingress.elb.existing.id }} # Load balancer ID
-    kubernetes.io/elb.class: {{ .Values.ingress.elb.existing.class }}   # Load balancer type
+    {{- if and .Values.ingress.otc.enabled (not .Values.ingress.otc.autocreate) }}
+    kubernetes.io/elb.id: {{ .Values.ingress.otc.existing.id }} # Load balancer ID
+    kubernetes.io/elb.class: {{ .Values.ingress.otc.existing.class }}   # Load balancer type
     {{- end }}
 spec:
+  {{- if and .Values.ingress.enabled .Values.ingress.otc.enabled }}
+  ingressClassName: cce
+  {{- end }}
+  {{- if and .Values.ingress.enabled .Values.ingress.nginx.enabled }}
+  ingressClassName: nginx
+  {{- end }}
   rules:
     - host: ''
       http:
@@ -35,5 +41,4 @@ spec:
                 port:
                   number: {{ .Values.service.ports.http }}
             pathType: Prefix
-  ingressClassName: cce    # OTC LoadBalancer is used.
 {{- end }}
