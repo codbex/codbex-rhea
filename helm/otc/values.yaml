@@ -17,13 +17,13 @@ ingress:
   enabled: true
   path: '/'
   port: 80
-  otc:
+  otc: # OTC ingress configs
     enabled: false
     autocreate: false
     existing:
-      id: <id-of-your-elb>
-      class: <union|performance> # `union` for  shared load balancer `performance` for dedicated load balancer
-  nginx:
+      id: # <id-of-your-elb>
+      class: <union|performance> # `union` for shared load balancer `performance` for dedicated load balancer
+  nginx: # nginx ingress configs
     enabled: false
 
 resources:
