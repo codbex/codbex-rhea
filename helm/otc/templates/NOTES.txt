@@ -5,22 +5,40 @@ APP VERSION: {{ .Chart.AppVersion }}
 
 ** Please be patient while the chart is being deployed **
 
-{{- if and .Values.ingress.enabled .Values.ingress.elb.autocreate }}
+{{/* Section for OTC ingress and autocreation of ELB */}}
+{{- if and .Values.ingress.enabled .Values.ingress.otc.enabled .Values.ingress.otc.autocreate }}
 1. Get the application URL by running:
 
     export ELB_IP=$(kubectl get ingress {{ .Values.name }}-ingress -o jsonpath='{.metadata.annotations.kubernetes\.io/elb\.ip}' -n {{ .Release.Namespace }})
-    echo "App URL: http://$ELB_IP:{{ .Values.ingress.port }}{{ .Values.ingress.path }}"
+    echo "Application URL: http://$ELB_IP:{{ .Values.ingress.port }}{{ .Values.ingress.path }}"
 {{- end }}
+{{/* Section for existing OTC ELB */}}
+{{- if and .Values.ingress.enabled .Values.ingress.otc.enabled .Values.ingress.otc.existing.id }}
+1. To access the application, open URL http://<elb-ip>:{{ .Values.ingress.port }}{{ .Values.ingress.path }} where <elb-ip> is the IP address of used OTC Elastic Load Balancer with id {{ .Values.ingress.otc.existing.id }}.
+{{- end }}
+{{/* Section for NGINX ingress */}}
+{{- if and .Values.ingress.enabled .Values.ingress.nginx.enabled }}
+1. Get the application URL by running:
 
+    export ELB_IP=$(kubectl get ingress codbex-rhea-ingress -o jsonpath='{.status.loadBalancer.ingress[1].ip}' -n {{ .Release.Namespace }})
+    echo "Application URL: http://$ELB_IP:{{ .Values.ingress.port }}{{ .Values.ingress.path }}"
+
+    NOTE: It may take a few minutes until the following command returns a correct URL.
+{{- end }}
+{{/* Section for LoadBalancer service */}}
 {{- if eq .Values.service.type "LoadBalancer" }}
 1. Get the application URL by running:
 
     export ELB_IP=$(kubectl get svc {{ .Values.name }}-svc -o jsonpath='{.status.loadBalancer.ingress[0].ip}'  -n {{ .Release.Namespace }})
-    echo "App URL: http://$ELB_IP:{{ .Values.service.ports.http }}"
+    echo "Application URL: http://$ELB_IP:{{ .Values.service.ports.http }}"
+{{- end }}
+{{/* Disabled ingress. Only service is create */}}
+{{- if and (not .Values.ingress.enabled) (eq .Values.service.type "NodePort") }}
+1. The application is not publicly accessible. A service of type {{ .Values.service.type }} is created.
+    To get the service IP execute the following:
+
+    export SERVICE_IP=$(kubectl get svc {{ .Values.name }}-svc -o jsonpath='{.spec.clusterIP}' -n {{ .Release.Namespace }})
+    echo "Service IP: $SERVICE_IP"
 {{- end }}
 
-{{- if not .Values.ingress.elb.autocreate }}
-1. To access the application, open URL http://<elb-ip>:{{ .Values.ingress.port }}{{ .Values.ingress.path }} where <elb-ip> is the IP address of used OTC Elastic Load Balancer.
-{{- end }}
-
-    NOTE: Default credentials are username `admin` and password `admin`, unless you have specified custom credentials via `rhea.admin.base64User` and `rhea.admin.base64Pass`.
+NOTE: Default credentials are username `admin` and password `admin`, unless you have specified custom credentials via `rhea.admin.base64User` and `rhea.admin.base64Pass`.

@@ -22,3 +22,4 @@ dist/
 derby.log
 .idea
 logs/
+*.tgz
