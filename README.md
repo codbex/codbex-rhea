@@ -1,4 +1,8 @@
-# codbex-rhea
+# Rhea by codbex
+
+[![Build Status](https://github.com/codbex/codbex-rhea/actions/workflows/build.yaml/badge.svg)](https://github.com/codbex/codbex-rhea/actions/workflows/build.yaml)
+[![Eclipse License](https://img.shields.io/badge/License-EPL%202.0-brightgreen.svg)](https://github.com/codbex/codbex-rhea/blob/main/LICENSE)
+[![Maven Central](https://img.shields.io/maven-central/v/com.codbex.rhea/codbex-rhea-application.svg)](https://central.sonatype.com/namespace/com.codbex.rhea)
 
 Rhea Edition contains entity and forms modeling standard components.
 
