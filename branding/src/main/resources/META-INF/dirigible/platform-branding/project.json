@@ -1,0 +1,8 @@
+{
+	"guid": "platform-branding",
+	"repository": {
+		"type": "git",
+		"branch": "main",
+		"url": "https://github.com/codbex/codbex-rhea.git"
+	}
+}
