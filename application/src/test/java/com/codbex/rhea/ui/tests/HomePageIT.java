@@ -10,19 +10,14 @@
  */
 package com.codbex.rhea.ui.tests;
 
-import com.codbex.rhea.ui.Rhea;
 import org.eclipse.dirigible.tests.framework.HtmlElementType;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
-class HomePageIT extends UserInterfaceIntegrationTest {
-
-    @Autowired
-    private Rhea rhea;
+class HomePageIT extends RheaIntegrationTest {
 
     @Test
     void testOpenHomepage() {
-        rhea.openHomePage();
+        ide.openHomePage();
 
         browser.assertElementExistsByTypeAndText(HtmlElementType.SPAN, "codbex");
         browser.assertElementExistsByTypeAndText(HtmlElementType.HEADER3, "Welcome to Rhea");
