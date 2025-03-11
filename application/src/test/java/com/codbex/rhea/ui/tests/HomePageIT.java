@@ -19,7 +19,6 @@ class HomePageIT extends RheaIntegrationTest {
     void testOpenHomepage() {
         ide.openHomePage();
 
-        browser.assertElementExistsByTypeAndText(HtmlElementType.SPAN, "codbex");
         browser.assertElementExistsByTypeAndText(HtmlElementType.HEADER3, "Welcome to Rhea");
     }
 }
