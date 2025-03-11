@@ -1,0 +1,65 @@
+{{- if and .Values.ingress.enabled .Values.ingress.tls.enabled .Values.ingress.otc.enabled }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Values.name }}-ingress
+  annotations:
+    kubernetes.io/elb.port: "443"
+    {{- if .Values.ingress.tls.certManager }}
+    cert-manager.io/cluster-issuer: letsencrypt
+    {{- end }}
+
+    {{- if .Values.ingress.otc.autocreate }}
+    kubernetes.io/elb.class: union
+#    kubernetes.io/elb.protocol-port: "https:443,http:80"
+    kubernetes.io/elb.autocreate:
+      '{
+          "name":"{{ .Values.name }}-elb",
+          "type":"public",
+          "bandwidth_name":"codbex-rhea-bandwidth",
+          "bandwidth_chargemode":"traffic",
+          "bandwidth_size":5,
+          "bandwidth_sharetype":"PER",
+          "eip_type":"5_bgp"
+        }'
+    {{- end }}
+
+    {{- if not .Values.ingress.otc.autocreate }}
+    kubernetes.io/elb.id: {{ .Values.ingress.otc.existing.id }} # Load balancer ID
+    kubernetes.io/elb.class: {{ .Values.ingress.otc.existing.class }}   # Load balancer type
+    {{- end }}
+
+spec:
+  {{- if not .Values.ingress.nginx.enabled }}
+  ingressClassName: cce
+  {{- end }}
+
+  {{- if .Values.ingress.nginx.enabled }}
+#  ingressClassName: nginx
+  {{- end }}
+
+  rules:
+    - http:
+        paths:
+          - path: {{ .Values.ingress.path }}
+            backend:
+              service:
+                name: {{ .Values.name }}-svc
+                port:
+                  number: {{ .Values.service.ports.http }}
+            pathType: Prefix
+#          - path: /.well-known/acme-challenge/*
+#            pathType: ImplementationSpecific
+#            backend:
+#              service:
+#                name: {{ .Values.name }}-svc
+#                port:
+#                  number: {{ .Values.service.ports.http }}
+
+      host: {{ .Values.ingress.tls.host }}
+
+  tls:
+    - hosts:
+      - {{ .Values.ingress.tls.host }}
+      secretName: {{ .Values.ingress.tls.secret }}
+{{- end }}

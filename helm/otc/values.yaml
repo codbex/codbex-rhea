@@ -25,6 +25,12 @@ ingress:
       class: <union|performance> # `union` for shared load balancer `performance` for dedicated load balancer
   nginx: # nginx ingress configs
     enabled: false
+  tls:
+    enabled: false
+    host: null
+    secret: rhea-tls-secret
+    certManager: false
+
 
 resources:
   limits: # max resources
