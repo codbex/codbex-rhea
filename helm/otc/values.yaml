@@ -3,7 +3,7 @@ name: codbex-rhea
 image:
   registry: ghcr.io
   repository: codbex/codbex-rhea
-  tag: 2.6.0
+  tag: 2.5.0
   pullPolicy: Always # Always or IfNotPresent
   pullSecrets: "" # Optional, set to a secret name if needed
 
@@ -29,11 +29,7 @@ ingress:
     enabled: false
     host: null
     secret: rhea-tls-secret
-    crt: null
-    key: null
-    certManager:
-      enabled: false
-      clisterIssuer: letsencrypt
+    certManager: false
 
 
 resources:
@@ -51,9 +47,7 @@ volume:
   storage: 2Gi
   storageClassName: ssd
 
-security:
-  authentication:
-    basic:
-      enabled: true
-      base64User: YWRtaW4= # base64 encoded `admin`
-      base64Pass: YWRtaW4= # base64 encoded `admin`
+rhea:
+  admin:
+    base64User: YWRtaW4= # base64 encoded `admin`
+    base64Pass: YWRtaW4= # base64 encoded `admin`
