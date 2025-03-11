@@ -18,8 +18,8 @@ ingress:
   path: '/'
   port: 80
   otc: # OTC ingress configs
-    enabled: false
-    autocreate: false
+    enabled: true
+    autocreate: true
     existing:
       id: # <id-of-your-elb>
       class: <union|performance> # `union` for shared load balancer `performance` for dedicated load balancer
