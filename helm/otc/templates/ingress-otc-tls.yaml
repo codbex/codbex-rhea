@@ -4,9 +4,16 @@ kind: Ingress
 metadata:
   name: {{ .Values.name }}-ingress
   annotations:
+    # needed by cert manager
+#    certmanager.k8s.io/cluster-issuer: letsencrypt
+    cert-manager.io/cluster-issuer: letsencrypt
+    kubernetes.io/ingress.class: cce
+#    "cert-manager.io/issue-temporary-certificate": "true"
+
+    kubernetes.io/elb.pool-protocol: https
+    kubernetes.io/elb.tls-ciphers-policy: tls-1-2
     kubernetes.io/elb.port: "443"
     {{- if .Values.ingress.tls.certManager }}
-    cert-manager.io/cluster-issuer: letsencrypt
     {{- end }}
 
     {{- if .Values.ingress.otc.autocreate }}
