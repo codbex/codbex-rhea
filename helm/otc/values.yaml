@@ -29,7 +29,11 @@ ingress:
     enabled: false
     host: null
     secret: rhea-tls-secret
-    certManager: false
+    crt: null
+    key: null
+    certManager:
+      enabled: false
+      clisterIssuer: letsencrypt
 
 
 resources:
