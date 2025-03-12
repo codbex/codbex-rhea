@@ -1,0 +1,4 @@
+volume:
+  path: '/target'
+  storage: 4Gi
+  storageClassName: ssd

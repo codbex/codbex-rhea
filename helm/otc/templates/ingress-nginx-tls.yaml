@@ -1,0 +1,31 @@
+{{- if and .Values.ingress.enabled .Values.ingress.nginx.enabled .Values.ingress.tls.enabled (not .Values.ingress.otc.enabled ) }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Values.name }}-ingress
+  annotations:
+    {{- if .Values.ingress.tls.certManager.enabled }}
+    cert-manager.io/cluster-issuer: letsencrypt
+    {{- end }}
+
+    kubernetes.io/ingress.class: nginx
+
+spec:
+  ingressClassName: nginx
+
+  rules:
+    - http:
+        paths:
+          - path: {{ .Values.ingress.path }}
+            backend:
+              service:
+                name: {{ .Values.name }}-svc
+                port:
+                  number: {{ .Values.service.ports.http }}
+            pathType: Prefix
+      host: {{ .Values.ingress.tls.host }}
+  tls:
+    - hosts:
+      - {{ .Values.ingress.tls.host }}
+      secretName: {{ .Values.ingress.tls.secret }}
+{{- end }}

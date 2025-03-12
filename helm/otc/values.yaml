@@ -25,6 +25,16 @@ ingress:
       class: <union|performance> # `union` for shared load balancer `performance` for dedicated load balancer
   nginx: # nginx ingress configs
     enabled: false
+  tls:
+    enabled: false
+    host: null
+    secret: rhea-tls-secret
+    crt: null
+    key: null
+    certManager:
+      enabled: false
+      clisterIssuer: letsencrypt
+
 
 resources:
   limits: # max resources
@@ -41,7 +51,9 @@ volume:
   storage: 2Gi
   storageClassName: ssd
 
-rhea:
-  admin:
-    base64User: YWRtaW4= # base64 encoded `admin`
-    base64Pass: YWRtaW4= # base64 encoded `admin`
+security:
+  authentication:
+    basic:
+      enabled: true
+      base64User: YWRtaW4= # base64 encoded `admin`
+      base64Pass: YWRtaW4= # base64 encoded `admin`

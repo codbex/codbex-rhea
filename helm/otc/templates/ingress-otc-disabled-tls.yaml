@@ -1,12 +1,13 @@
 # OTC ingress spec: https://docs.otc.t-systems.com/cloud-container-engine/umn/network/ingresses/loadbalancer_ingresses/using_kubectl_to_create_a_loadbalancer_ingress.html
-{{- if .Values.ingress.enabled }}
+{{- if and .Values.ingress.enabled .Values.ingress.otc.enabled (not .Values.ingress.tls.enabled) }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ .Values.name }}-ingress
   annotations:
     kubernetes.io/elb.port: {{ .Values.ingress.port | quote }}
-    {{- if and .Values.ingress.enabled .Values.ingress.otc.autocreate }}
+
+    {{- if .Values.ingress.otc.autocreate }}
     kubernetes.io/elb.class: union
     kubernetes.io/elb.autocreate:
       '{
@@ -19,20 +20,23 @@ metadata:
           "eip_type":"5_bgp"
         }'
     {{- end }}
-    {{- if and .Values.ingress.otc.enabled (not .Values.ingress.otc.autocreate) }}
+
+    {{- if not .Values.ingress.otc.autocreate }}
     kubernetes.io/elb.id: {{ .Values.ingress.otc.existing.id }} # Load balancer ID
     kubernetes.io/elb.class: {{ .Values.ingress.otc.existing.class }}   # Load balancer type
     {{- end }}
+
 spec:
   {{- if and .Values.ingress.enabled .Values.ingress.otc.enabled }}
   ingressClassName: cce
   {{- end }}
+
   {{- if and .Values.ingress.enabled .Values.ingress.nginx.enabled }}
   ingressClassName: nginx
   {{- end }}
+
   rules:
-    - host: ''
-      http:
+    - http:
         paths:
           - path: {{ .Values.ingress.path }}
             backend:

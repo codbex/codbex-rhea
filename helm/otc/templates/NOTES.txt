@@ -13,18 +13,24 @@ APP VERSION: {{ .Chart.AppVersion }}
     echo "Application URL: http://$ELB_IP:{{ .Values.ingress.port }}{{ .Values.ingress.path }}"
 {{- end }}
 {{/* Section for existing OTC ELB */}}
-{{- if and .Values.ingress.enabled .Values.ingress.otc.enabled .Values.ingress.otc.existing.id }}
+{{- if and .Values.ingress.enabled .Values.ingress.otc.enabled .Values.ingress.otc.existing.id (not .Values.ingress.tls.enabled) }}
 1. To access the application, open URL http://<elb-ip>:{{ .Values.ingress.port }}{{ .Values.ingress.path }} where <elb-ip> is the IP address of used OTC Elastic Load Balancer with id {{ .Values.ingress.otc.existing.id }}.
 {{- end }}
-{{/* Section for NGINX ingress */}}
-{{- if and .Values.ingress.enabled .Values.ingress.nginx.enabled }}
+{{/* Section for NGINX ingress without TLS */}}
+{{- if and .Values.ingress.enabled .Values.ingress.nginx.enabled (not .Values.ingress.tls.enabled) }}
 1. Get the application URL by running:
-
     export ELB_IP=$(kubectl get ingress codbex-rhea-ingress -o jsonpath='{.status.loadBalancer.ingress[1].ip}' -n {{ .Release.Namespace }})
     echo "Application URL: http://$ELB_IP:{{ .Values.ingress.port }}{{ .Values.ingress.path }}"
 
     NOTE: It may take a few minutes until the following command returns a correct URL.
 {{- end }}
+
+{{/* Section for configured TLS */}}
+{{- if and .Values.ingress.enabled .Values.ingress.tls.enabled .Values.ingress.tls.host }}
+1. Open the application using https://{{ .Values.ingress.tls.host }}
+    NOTE: It may take a few minutes until the application is started
+{{- end }}
+
 {{/* Section for LoadBalancer service */}}
 {{- if eq .Values.service.type "LoadBalancer" }}
 1. Get the application URL by running:
@@ -32,7 +38,7 @@ APP VERSION: {{ .Chart.AppVersion }}
     export ELB_IP=$(kubectl get svc {{ .Values.name }}-svc -o jsonpath='{.status.loadBalancer.ingress[0].ip}'  -n {{ .Release.Namespace }})
     echo "Application URL: http://$ELB_IP:{{ .Values.service.ports.http }}"
 {{- end }}
-{{/* Disabled ingress. Only service is create */}}
+{{/* Disabled ingress. Only service is created */}}
 {{- if and (not .Values.ingress.enabled) (eq .Values.service.type "NodePort") }}
 1. The application is not publicly accessible. A service of type {{ .Values.service.type }} is created.
     To get the service IP execute the following:
@@ -41,4 +47,4 @@ APP VERSION: {{ .Chart.AppVersion }}
     echo "Service IP: $SERVICE_IP"
 {{- end }}
 
-NOTE: Default credentials are username `admin` and password `admin`, unless you have specified custom credentials via `rhea.admin.base64User` and `rhea.admin.base64Pass`.
+NOTE: Default credentials are username `admin` and password `admin`, unless you have specified custom credentials via `security.authentication.basic.base64User` and `security.authentication.basic.base64Pass`.
