@@ -25,11 +25,6 @@
     export GIT_REPO='<path-to-your-git-repo>'
     export RELEASE_NAME='my-codbex-rhea'
     export NAMESPACE='default'
-    
-    # Iliyan's config
-    export GIT_REPO='/Users/iliyan/work/git/codbex-rhea'
-    export KUBECONFIG='/Users/iliyan/work/work-share/projects/open-telekom-cloud/marketplace/otc-deployment/kubeconfig-marketplace-app-testing.yaml'
-    export NAMESPACE='marketplace-testing' 
     ```
 
 ## Disabled TLS
@@ -50,7 +45,7 @@ curl http://$IP/actuator/health/liveness
 cd $GIT_REPO/helm/otc
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-existing-elb.yaml
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-no-tls-existing-elb.yaml
  
 export IP='80.158.91.18'
 curl http://$IP/actuator/health/liveness
@@ -61,7 +56,7 @@ curl http://$IP/actuator/health/liveness
 cd $GIT_REPO/helm/otc
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-nginx-ingress-no-tls.yaml
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-no-tls-nginx-ingress-no-tls.yaml
   
 export IP='80.158.44.18'
 curl http://$IP/actuator/health/liveness
@@ -93,7 +88,7 @@ cd $GIT_REPO/helm/otc
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
 export LB_IP='80.158.91.18'
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE  --values ../example-values/values-load-balancer-service.yaml
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE  --values ../example-values/values-no-tls-load-balancer-service.yaml
 
 export IP='80.158.91.18'
 curl http://$IP/actuator/health/liveness
