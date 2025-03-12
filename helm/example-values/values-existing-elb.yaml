@@ -1,0 +1,8 @@
+ingress:
+  enabled: true
+  otc:
+    enabled: true
+    autocreate: false
+    existing:
+      id: 646c69e0-a1d2-47ac-9ee4-cd9c0e011d50
+      class: union # `union` for shared load balancer `performance` for dedicated load balancer

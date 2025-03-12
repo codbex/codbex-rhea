@@ -25,13 +25,18 @@
     export GIT_REPO='<path-to-your-git-repo>'
     export RELEASE_NAME='my-codbex-rhea'
     export NAMESPACE='default'
+    
+    # Iliyan's config
+    export GIT_REPO='/Users/iliyan/work/git/codbex-rhea'
+    export KUBECONFIG='/Users/iliyan/work/work-share/projects/open-telekom-cloud/marketplace/otc-deployment/kubeconfig-marketplace-app-testing.yaml'
+    export NAMESPACE='marketplace-testing' 
     ```
 
 ## Disabled TLS
 
 ### Default installation (with OTC ingress and autocreate ELB)
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd $GIT_REPO/helm/otc
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE
@@ -42,10 +47,10 @@ curl http://$IP/actuator/health/liveness
 
 ### Install with existing OTC ELB for ingress
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd $GIT_REPO/helm/otc
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-no-tls-existing-elb.yaml
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-existing-elb.yaml
  
 export IP='80.158.91.18'
 curl http://$IP/actuator/health/liveness
@@ -53,10 +58,10 @@ curl http://$IP/actuator/health/liveness
 
 ### Install with nginx ingress
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd $GIT_REPO/helm/otc
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-no-tls-nginx-ingress-no-tls.yaml
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-nginx-ingress-no-tls.yaml
   
 export IP='80.158.44.18'
 curl http://$IP/actuator/health/liveness
@@ -64,7 +69,7 @@ curl http://$IP/actuator/health/liveness
 
 ### Install with disabled volumes
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd $GIT_REPO/helm/otc
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-disabled-volume.yaml
@@ -74,7 +79,7 @@ kubectl get pvc -n $NAMESPACE
 
 ### Install with configured volumes
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd $GIT_REPO/helm/otc
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-configured-volume.yaml
@@ -84,11 +89,11 @@ kubectl get pvc -n $NAMESPACE
 
 ### Install with LoadBalancer service
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd $GIT_REPO/helm/otc
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
 export LB_IP='80.158.91.18'
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE  --values ../example-values/values-no-tls-load-balancer-service.yaml
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE  --values ../example-values/values-load-balancer-service.yaml
 
 export IP='80.158.91.18'
 curl http://$IP/actuator/health/liveness
@@ -105,7 +110,7 @@ kubectl get ingress -n $NAMESPACE # ingress shouldn't be created
 
 ### OTC with autocreated ELB
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd $GIT_REPO/helm/otc
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-tls-otc-autocreate-elb.yaml
@@ -116,7 +121,7 @@ curl https://rhea-demo.eu3.codbex.com/actuator/health/liveness
 
 ### OTC with existing ELB
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd $GIT_REPO/helm/otc
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-tls-existing-elb.yaml
@@ -127,7 +132,7 @@ curl https://rhea-demo.eu3.codbex.com/actuator/health/liveness
 
 ### Install with nginx ingress and user provided certificate
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd $GIT_REPO/helm/otc
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-tls-nginx-elb-user-cert.yaml
@@ -180,7 +185,7 @@ curl https://rhea-demo.eu3.codbex.com/actuator/health/liveness
   - Apply the file `kubectl apply -f cluster-issuer.yaml -n cert-manager`
 
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd $GIT_REPO/helm/otc
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-tls-nginx-cert-manager.yaml

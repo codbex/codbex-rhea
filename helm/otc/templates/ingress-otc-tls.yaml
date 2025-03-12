@@ -4,21 +4,13 @@ kind: Ingress
 metadata:
   name: {{ .Values.name }}-ingress
   annotations:
-    # needed by cert manager
-#    certmanager.k8s.io/cluster-issuer: letsencrypt
-    cert-manager.io/cluster-issuer: letsencrypt
     kubernetes.io/ingress.class: cce
-#    "cert-manager.io/issue-temporary-certificate": "true"
-
     kubernetes.io/elb.pool-protocol: https
     kubernetes.io/elb.tls-ciphers-policy: tls-1-2
     kubernetes.io/elb.port: "443"
-    {{- if .Values.ingress.tls.certManager }}
-    {{- end }}
 
     {{- if .Values.ingress.otc.autocreate }}
     kubernetes.io/elb.class: union
-#    kubernetes.io/elb.protocol-port: "https:443,http:80"
     kubernetes.io/elb.autocreate:
       '{
           "name":"{{ .Values.name }}-elb",
@@ -37,13 +29,7 @@ metadata:
     {{- end }}
 
 spec:
-  {{- if not .Values.ingress.nginx.enabled }}
   ingressClassName: cce
-  {{- end }}
-
-  {{- if .Values.ingress.nginx.enabled }}
-#  ingressClassName: nginx
-  {{- end }}
 
   rules:
     - http:
@@ -55,14 +41,6 @@ spec:
                 port:
                   number: {{ .Values.service.ports.http }}
             pathType: Prefix
-#          - path: /.well-known/acme-challenge/*
-#            pathType: ImplementationSpecific
-#            backend:
-#              service:
-#                name: {{ .Values.name }}-svc
-#                port:
-#                  number: {{ .Values.service.ports.http }}
-
       host: {{ .Values.ingress.tls.host }}
 
   tls:
