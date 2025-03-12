@@ -47,4 +47,4 @@ APP VERSION: {{ .Chart.AppVersion }}
     echo "Service IP: $SERVICE_IP"
 {{- end }}
 
-NOTE: Default credentials are username `admin` and password `admin`, unless you have specified custom credentials via `rhea.admin.base64User` and `rhea.admin.base64Pass`.
+NOTE: Default credentials are username `admin` and password `admin`, unless you have specified custom credentials via `security.authentication.basic.base64User` and `security.authentication.basic.base64Pass`.
