@@ -25,11 +25,6 @@
     export GIT_REPO='<path-to-your-git-repo>'
     export RELEASE_NAME='my-codbex-rhea'
     export NAMESPACE='default'
-    
-    # Iliyan's config
-    export GIT_REPO='/Users/iliyan/work/git/codbex-rhea'
-    export KUBECONFIG='/Users/iliyan/work/work-share/projects/open-telekom-cloud/marketplace/otc-deployment/kubeconfig-marketplace-app-testing.yaml'
-    export NAMESPACE='marketplace-testing' 
     ```
 
 ## Disabled TLS
