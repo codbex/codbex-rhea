@@ -51,7 +51,9 @@ volume:
   storage: 2Gi
   storageClassName: ssd
 
-rhea:
-  admin:
-    base64User: YWRtaW4= # base64 encoded `admin`
-    base64Pass: YWRtaW4= # base64 encoded `admin`
+security:
+  authentication:
+    basic:
+      enabled: true
+      base64User: YWRtaW4= # base64 encoded `admin`
+      base64Pass: YWRtaW4= # base64 encoded `admin`
