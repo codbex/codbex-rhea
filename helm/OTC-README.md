@@ -25,6 +25,7 @@
 - Prerequisites
     ```shell
     export KUBECONFIG='<path-to-your-kubeconfig>'
+  
     export GIT_REPO='<path-to-your-git-repo>'
     export RELEASE_NAME='my-codbex-rhea'
     export NAMESPACE='default'
@@ -39,7 +40,7 @@ helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE
 
-export IP='80.158.16.207'
+export IP='80.158.108.209'
 curl http://$IP/actuator/health/liveness
 ```
 
@@ -227,4 +228,11 @@ helm template . --debug  --wait --namespace $NAMESPACE --values ../example-value
 ```shell
 # paste the following and click tab to autocomplete the pod
 kubectl logs -n cert-manager --follow cert-manager-
+```
+
+### Uninstall marketplace chart
+```shell
+helm list --namespace $NAMESPACE
+helm uninstall 
+
 ```

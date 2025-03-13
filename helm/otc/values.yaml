@@ -20,7 +20,7 @@ ingress:
   otc: # OTC ingress configs
     enabled: true
     autocreate: true
-    existing:
+    existingELB:
       id: # <id-of-your-elb>
       class: <union|performance> # `union` for shared load balancer `performance` for dedicated load balancer
   nginx: # nginx ingress configs
@@ -34,7 +34,6 @@ ingress:
     certManager:
       enabled: false
       clisterIssuer: letsencrypt
-
 
 resources:
   limits: # max resources

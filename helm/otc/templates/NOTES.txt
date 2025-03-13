@@ -13,8 +13,8 @@ APP VERSION: {{ .Chart.AppVersion }}
     echo "Application URL: http://$ELB_IP:{{ .Values.ingress.port }}{{ .Values.ingress.path }}"
 {{- end }}
 {{/* Section for existing OTC ELB */}}
-{{- if and .Values.ingress.enabled .Values.ingress.otc.enabled .Values.ingress.otc.existing.id (not .Values.ingress.tls.enabled) }}
-1. To access the application, open URL http://<elb-ip>:{{ .Values.ingress.port }}{{ .Values.ingress.path }} where <elb-ip> is the IP address of used OTC Elastic Load Balancer with id {{ .Values.ingress.otc.existing.id }}.
+{{- if and .Values.ingress.enabled .Values.ingress.otc.enabled .Values.ingress.otc.existingELB.id (not .Values.ingress.tls.enabled) }}
+1. To access the application, open URL http://<elb-ip>:{{ .Values.ingress.port }}{{ .Values.ingress.path }} where <elb-ip> is the IP address of used OTC Elastic Load Balancer with id {{ .Values.ingress.otc.existingELB.id }}.
 {{- end }}
 {{/* Section for NGINX ingress without TLS */}}
 {{- if and .Values.ingress.enabled .Values.ingress.nginx.enabled (not .Values.ingress.tls.enabled) }}

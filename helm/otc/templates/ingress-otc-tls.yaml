@@ -24,8 +24,8 @@ metadata:
     {{- end }}
 
     {{- if not .Values.ingress.otc.autocreate }}
-    kubernetes.io/elb.id: {{ .Values.ingress.otc.existing.id }} # Load balancer ID
-    kubernetes.io/elb.class: {{ .Values.ingress.otc.existing.class }}   # Load balancer type
+    kubernetes.io/elb.id: {{ .Values.ingress.otc.existingELB.id }} # Load balancer ID
+    kubernetes.io/elb.class: {{ .Values.ingress.otc.existingELB.class }}   # Load balancer type
     {{- end }}
 
 spec:
