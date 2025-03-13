@@ -20,6 +20,7 @@
   * [Other useful commands](#other-useful-commands)
     * [Template](#template)
     * [Cert manager logs](#cert-manager-logs)
+    * [Uninstall marketplace chart](#uninstall-marketplace-chart)
 <!-- TOC -->
 
 - Prerequisites
@@ -232,7 +233,5 @@ kubectl logs -n cert-manager --follow cert-manager-
 
 ### Uninstall marketplace chart
 ```shell
-helm list --namespace $NAMESPACE
-helm uninstall 
-
+helm uninstall --namespace $NAMESPACE mkp-
 ```
