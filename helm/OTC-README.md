@@ -20,7 +20,10 @@
   * [Other useful commands](#other-useful-commands)
     * [Template](#template)
     * [Cert manager logs](#cert-manager-logs)
+    * [List all marketplace installations](#list-all-marketplace-installations)
+    * [List actual values used for deployment in helm](#list-actual-values-used-for-deployment-in-helm)
     * [Uninstall marketplace chart](#uninstall-marketplace-chart)
+    * [Test installation](#test-installation)
 <!-- TOC -->
 
 - Prerequisites
@@ -231,7 +234,27 @@ helm template . --debug  --wait --namespace $NAMESPACE --values ../example-value
 kubectl logs -n cert-manager --follow cert-manager-
 ```
 
+### List all marketplace installations
+```shell
+watch helm list --namespace $NAMESPACE
+```
+
+### List actual values used for deployment in helm
+```shell
+helm get values -n $NAMESPACE mkp-
+```
+
 ### Uninstall marketplace chart
 ```shell
 helm uninstall --namespace $NAMESPACE mkp-
+```
+
+### Test installation
+```shell
+cd "$GIT_REPO/helm/otc"
+helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
+helm uninstall --namespace $NAMESPACE mkp-
+
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-marketplace-installation-test.yaml
+
 ```
