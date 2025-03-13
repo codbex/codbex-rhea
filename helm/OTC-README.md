@@ -6,15 +6,18 @@
     * [Default installation (with OTC ingress and autocreate ELB)](#default-installation-with-otc-ingress-and-autocreate-elb)
     * [Install with existing OTC ELB for ingress](#install-with-existing-otc-elb-for-ingress)
     * [Install with nginx ingress](#install-with-nginx-ingress)
-    * [Install with disabled volumes](#install-with-disabled-volumes)
-    * [Install with configured volumes](#install-with-configured-volumes)
     * [Install with LoadBalancer service](#install-with-loadbalancer-service)
   * [Configured TSL](#configured-tsl)
     * [OTC with autocreated ELB](#otc-with-autocreated-elb)
     * [OTC with existing ELB](#otc-with-existing-elb)
     * [Install with nginx ingress and user provided certificate](#install-with-nginx-ingress-and-user-provided-certificate)
     * [Install with nginx ingress and cert manager generated certificate](#install-with-nginx-ingress-and-cert-manager-generated-certificate)
-  * [Other commands](#other-commands)
+  * [Other installation configurations](#other-installation-configurations)
+    * [Install with configured user](#install-with-configured-user)
+    * [Install with disabled volumes](#install-with-disabled-volumes)
+    * [Install with configured volumes](#install-with-configured-volumes)
+    * [Install with configured resources](#install-with-configured-resources)
+  * [Other useful commands](#other-useful-commands)
     * [Template](#template)
     * [Cert manager logs](#cert-manager-logs)
 <!-- TOC -->
@@ -60,26 +63,6 @@ helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-v
   
 export IP='80.158.44.18'
 curl http://$IP/actuator/health/liveness
-```
-
-### Install with disabled volumes
-```shell
-cd "$GIT_REPO/helm/otc"
-helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
-
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-disabled-volume.yaml
- 
-kubectl get pvc -n $NAMESPACE
-```
-
-### Install with configured volumes
-```shell
-cd "$GIT_REPO/helm/otc"
-helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
-
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-configured-volume.yaml
-
-kubectl get pvc -n $NAMESPACE
 ```
 
 ### Install with LoadBalancer service
@@ -189,7 +172,50 @@ helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-v
 curl https://rhea-demo.eu3.codbex.com/actuator/health/liveness
 ```
 
-## Other commands
+
+## Other installation configurations
+
+### Install with configured user
+```shell
+cd "$GIT_REPO/helm/otc"
+helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
+
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-configured-user.yaml
+
+# test login with configured credentials
+```
+
+### Install with disabled volumes
+```shell
+cd "$GIT_REPO/helm/otc"
+helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
+
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-disabled-volume.yaml
+ 
+kubectl get pvc -n $NAMESPACE
+```
+
+### Install with configured volumes
+```shell
+cd "$GIT_REPO/helm/otc"
+helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
+
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-configured-volume.yaml
+
+kubectl get pvc -n $NAMESPACE
+```
+
+### Install with configured resources
+```shell
+cd "$GIT_REPO/helm/otc"
+helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
+
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-configured-resources.yaml
+
+kubectl get deploy -o yaml -n $NAMESPACE
+```
+
+## Other useful commands
 
 ### Template
 ```shell
