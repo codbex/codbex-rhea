@@ -1,5 +1,5 @@
 # OTC ingress spec: https://docs.otc.t-systems.com/cloud-container-engine/umn/network/ingresses/loadbalancer_ingresses/using_kubectl_to_create_a_loadbalancer_ingress.html
-{{- if and .Values.ingress.enabled .Values.ingress.otc.enabled (not .Values.ingress.tls.enabled) }}
+{{- if and (include "normalizeBoolean" .Values.ingress.enabled | fromYaml) (include "normalizeBoolean" .Values.ingress.otc.enabled | fromYaml) (not (include "normalizeBoolean" .Values.ingress.tls.enabled | fromYaml)) }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -27,11 +27,11 @@ metadata:
     {{- end }}
 
 spec:
-  {{- if and .Values.ingress.enabled .Values.ingress.otc.enabled }}
+  {{- if and (include "normalizeBoolean" .Values.ingress.enabled | fromYaml) (include "normalizeBoolean" .Values.ingress.otc.enabled | fromYaml) }}
   ingressClassName: cce
   {{- end }}
 
-  {{- if and .Values.ingress.enabled .Values.ingress.nginx.enabled }}
+  {{- if and (include "normalizeBoolean" .Values.ingress.enabled | fromYaml) (include "normalizeBoolean" .Values.ingress.nginx.enabled | fromYaml) }}
   ingressClassName: nginx
   {{- end }}
 

@@ -6,18 +6,18 @@ APP VERSION: {{ .Chart.AppVersion }}
 ** Please be patient while the chart is being deployed **
 
 {{/* Section for OTC ingress and autocreation of ELB */}}
-{{- if and .Values.ingress.enabled .Values.ingress.otc.enabled .Values.ingress.otc.autocreate }}
+{{- if and (include "normalizeBoolean" .Values.ingress.enabled | fromYaml) (include "normalizeBoolean" .Values.ingress.otc.enabled | fromYaml) (include "normalizeBoolean" .Values.ingress.otc.autocreate | fromYaml) }}
 1. Get the application URL by running:
 
     export ELB_IP=$(kubectl get ingress {{ .Values.name }}-ingress -o jsonpath='{.metadata.annotations.kubernetes\.io/elb\.ip}' -n {{ .Release.Namespace }})
     echo "Application URL: http://$ELB_IP:{{ .Values.ingress.port }}{{ .Values.ingress.path }}"
 {{- end }}
 {{/* Section for existing OTC ELB */}}
-{{- if and .Values.ingress.enabled .Values.ingress.otc.enabled .Values.ingress.otc.existingELB.id (not .Values.ingress.tls.enabled) }}
+{{- if and (include "normalizeBoolean" .Values.ingress.enabled | fromYaml) (include "normalizeBoolean" .Values.ingress.otc.enabled | fromYaml) .Values.ingress.otc.existingELB.id (not (include "normalizeBoolean" .Values.ingress.tls.enabled | fromYaml)) }}
 1. To access the application, open URL http://<elb-ip>:{{ .Values.ingress.port }}{{ .Values.ingress.path }} where <elb-ip> is the IP address of used OTC Elastic Load Balancer with id {{ .Values.ingress.otc.existingELB.id }}.
 {{- end }}
 {{/* Section for NGINX ingress without TLS */}}
-{{- if and .Values.ingress.enabled .Values.ingress.nginx.enabled (not .Values.ingress.tls.enabled) }}
+{{- if and (include "normalizeBoolean" .Values.ingress.enabled | fromYaml) (include "normalizeBoolean" .Values.ingress.nginx.enabled | fromYaml) (not (include "normalizeBoolean" .Values.ingress.tls.enabled | fromYaml)) }}
 1. Get the application URL by running:
     export ELB_IP=$(kubectl get ingress codbex-rhea-ingress -o jsonpath='{.status.loadBalancer.ingress[1].ip}' -n {{ .Release.Namespace }})
     echo "Application URL: http://$ELB_IP:{{ .Values.ingress.port }}{{ .Values.ingress.path }}"
@@ -26,7 +26,7 @@ APP VERSION: {{ .Chart.AppVersion }}
 {{- end }}
 
 {{/* Section for configured TLS */}}
-{{- if and .Values.ingress.enabled .Values.ingress.tls.enabled .Values.ingress.tls.host }}
+{{- if and (include "normalizeBoolean" .Values.ingress.enabled | fromYaml) (include "normalizeBoolean" .Values.ingress.tls.enabled | fromYaml) .Values.ingress.tls.host }}
 1. Open the application using https://{{ .Values.ingress.tls.host }}
     NOTE: It may take a few minutes until the application is started
 {{- end }}
@@ -39,7 +39,7 @@ APP VERSION: {{ .Chart.AppVersion }}
     echo "Application URL: http://$ELB_IP:{{ .Values.service.ports.http }}"
 {{- end }}
 {{/* Disabled ingress. Only service is created */}}
-{{- if and (not .Values.ingress.enabled) (eq .Values.service.type "NodePort") }}
+{{- if and (not (include "normalizeBoolean" .Values.ingress.enabled | fromYaml)) (eq .Values.service.type "NodePort") }}
 1. The application is not publicly accessible. A service of type {{ .Values.service.type }} is created.
     To get the service IP execute the following:
 

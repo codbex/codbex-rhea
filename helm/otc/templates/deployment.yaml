@@ -19,7 +19,7 @@ spec:
       labels:
         app: {{ .Values.name }}
     spec:
-      {{- if .Values.volume.enabled }}
+      {{- if (include "normalizeBoolean" .Values.volume.enabled | fromYaml) }}
       volumes:
       - name: app-mount
         persistentVolumeClaim:
@@ -38,7 +38,7 @@ spec:
         {{- end }}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
-        {{- if .Values.volume.enabled }}
+        {{- if (include "normalizeBoolean" .Values.volume.enabled | fromYaml) }}
         volumeMounts:
         - mountPath: '/target'
           name: app-mount

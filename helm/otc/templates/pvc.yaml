@@ -1,4 +1,4 @@
-{{- if .Values.volume.enabled }}
+{{- if (include "normalizeBoolean" .Values.volume.enabled | fromYaml) }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
