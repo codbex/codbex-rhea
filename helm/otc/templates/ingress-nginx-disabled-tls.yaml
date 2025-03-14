@@ -1,4 +1,8 @@
-{{- if and .Values.ingress.enabled .Values.ingress.nginx.enabled (not .Values.ingress.otc.enabled) (not .Values.ingress.tls.enabled) }}
+  {{- if and
+      (include "normalizeBoolean" .Values.ingress.enabled)
+      (include "normalizeBoolean" .Values.ingress.nginx.enabled)
+      (not (include "normalizeBoolean" .Values.ingress.otc.enabled))
+      (not (include "normalizeBoolean" .Values.ingress.tls.enabled)) }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -16,4 +20,4 @@ spec:
                 port:
                   number: {{ .Values.service.ports.http }}
             pathType: Prefix
-{{- end }}
+  {{- end }}

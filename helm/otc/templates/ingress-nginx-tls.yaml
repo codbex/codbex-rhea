@@ -1,10 +1,15 @@
-{{- if and .Values.ingress.enabled .Values.ingress.nginx.enabled .Values.ingress.tls.enabled (not .Values.ingress.otc.enabled ) }}
+{{- if and
+    (include "normalizeBoolean" .Values.ingress.enabled | fromYaml)
+    (include "normalizeBoolean" .Values.ingress.nginx.enabled | fromYaml)
+    (include "normalizeBoolean" .Values.ingress.tls.enabled | fromYaml)
+    (not (include "normalizeBoolean" .Values.ingress.otc.enabled | fromYaml))
+}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ .Values.name }}-ingress
   annotations:
-    {{- if .Values.ingress.tls.certManager.enabled }}
+    {{- if (include "normalizeBoolean" .Values.ingress.tls.certManager.enabled | fromYaml) }}
     cert-manager.io/cluster-issuer: letsencrypt
     {{- end }}
 
@@ -26,6 +31,6 @@ spec:
       host: {{ .Values.ingress.tls.host }}
   tls:
     - hosts:
-      - {{ .Values.ingress.tls.host }}
+        - {{ .Values.ingress.tls.host }}
       secretName: {{ .Values.ingress.tls.secret }}
-{{- end }}
+  {{- end }}
