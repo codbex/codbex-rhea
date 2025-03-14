@@ -1,4 +1,8 @@
-{{- if and (include "normalizeBoolean" .Values.ingress.enabled | fromYaml) (include "normalizeBoolean" .Values.ingress.tls.enabled | fromYaml) (include "normalizeBoolean" .Values.ingress.otc.enabled | fromYaml) }}
+{{- if and
+    (include "normalizeBoolean" .Values.ingress.enabled | fromYaml)
+    (include "normalizeBoolean" .Values.ingress.tls.enabled | fromYaml)
+    (include "normalizeBoolean" .Values.ingress.otc.enabled | fromYaml)
+}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -9,7 +13,7 @@ metadata:
     kubernetes.io/elb.tls-ciphers-policy: tls-1-2
     kubernetes.io/elb.port: "443"
 
-    {{- if .Values.ingress.otc.autocreate }}
+    {{- if (include "normalizeBoolean" .Values.ingress.otc.autocreate | fromYaml) }}
     kubernetes.io/elb.class: union
     kubernetes.io/elb.autocreate:
       '{
@@ -23,7 +27,7 @@ metadata:
         }'
     {{- end }}
 
-    {{- if not .Values.ingress.otc.autocreate }}
+    {{- if not (include "normalizeBoolean" .Values.ingress.otc.autocreate | fromYaml) }}
     kubernetes.io/elb.id: {{ .Values.ingress.otc.existingELB.id }} # Load balancer ID
     kubernetes.io/elb.class: {{ .Values.ingress.otc.existingELB.class }}   # Load balancer type
     {{- end }}
@@ -45,6 +49,6 @@ spec:
 
   tls:
     - hosts:
-      - {{ .Values.ingress.tls.host }}
+        - {{ .Values.ingress.tls.host }}
       secretName: {{ .Values.ingress.tls.secret }}
-{{- end }}
+  {{- end }}
