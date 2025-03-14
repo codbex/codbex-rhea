@@ -36,7 +36,7 @@ APP VERSION: {{ .Chart.AppVersion }}
 {{- if eq .Values.service.type "LoadBalancer" }}
 1. Get the application URL by running:
 
-    export ELB_IP=$(kubectl get svc {{ .Values.name }}-svc -o jsonpath='{.status.loadBalancer.ingress[0].ip}'  -n {{ .Release.Namespace }})
+    export ELB_IP=$(kubectl get svc {{ .Values.name }}-svc -o jsonpath='{.status.loadBalancer.ingress[1].ip}'  -n {{ .Release.Namespace }})
     echo "Application URL: http://$ELB_IP:{{ .Values.service.ports.http }}"
 {{- end }}
 
