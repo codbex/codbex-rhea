@@ -1,7 +1,7 @@
 {{- define "normalizeBoolean" -}}
   {{- if eq (. | toString | lower) "true" -}}
-    true
+    {{- print "true" -}}
   {{- else -}}
-    false
+    {{- print "false" -}}
   {{- end -}}
 {{- end -}}
