@@ -8,16 +8,14 @@ ingress:
     existing:
       class: union
   tls:
-    enabled: "true"
     certmanager:
       clusterIssuer: letsencrypt
       enabled: "true"
     host: rhea-demo.eu3.codbex.com
-
 resources:
   limits:
     cpu: "4"
-    memory: 4Gi
+    memory: 6Gi
   requests:
     cpu: "1"
     memory: 1Gi
