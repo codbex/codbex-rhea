@@ -1,0 +1,27 @@
+ingress:
+  enabled: "true"
+  nginx:
+    enabled: "true"
+  otc:
+    autocreate: "false"
+    enabled: "false"
+    existing:
+      class: union
+  tls:
+    enabled: "true"
+    certmanager:
+      clusterIssuer: letsencrypt
+      enabled: "true"
+    host: rhea-demo.eu3.codbex.com
+
+resources:
+  limits:
+    cpu: "4"
+    memory: 4Gi
+  requests:
+    cpu: "1"
+    memory: 1Gi
+volume:
+  enabled: "true"
+  storage: 2Gi
+  storageClassName: ssd
