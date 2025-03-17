@@ -31,9 +31,9 @@ ingress:
     secret: rhea-tls-secret
     crt: null
     key: null
-    certManager:
+    certmanager:
       enabled: false
-      clisterIssuer: letsencrypt
+      clusterIssuer: letsencrypt
 
 resources:
   limits: # max resources

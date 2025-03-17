@@ -3,7 +3,7 @@
 {{- $otcEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.otc.enabled)) | trim }}
 {{- $otcAutocreateEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.otc.autocreate)) | trim }}
 {{- $tlsEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.tls.enabled)) | trim }}
-{{- $certManagerEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.tls.certManager.enabled)) | trim }}
+{{- $certManagerEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.tls.certmanager.enabled)) | trim }}
 
 CHART NAME: {{ .Chart.Name }}
 CHART VERSION: {{ .Chart.Version }}

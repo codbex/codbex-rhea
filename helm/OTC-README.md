@@ -23,6 +23,7 @@
     * [List all marketplace installations](#list-all-marketplace-installations)
     * [List actual values used for deployment in helm](#list-actual-values-used-for-deployment-in-helm)
     * [Uninstall marketplace chart](#uninstall-marketplace-chart)
+    * [Test install](#test-install)
 <!-- TOC -->
 
 - Prerequisites
@@ -245,4 +246,16 @@ helm get values -n $NAMESPACE mkp-
 ### Uninstall marketplace chart
 ```shell
 helm uninstall --namespace $NAMESPACE mkp-
+```
+
+### Test install
+```shell
+helm uninstall --namespace $NAMESPACE mkp-
+
+cd "$GIT_REPO/helm/otc"
+helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
+
+helm template . --debug  --wait --namespace $NAMESPACE --values ../example-values/values-test.yaml
+
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-test.yaml
 ```
