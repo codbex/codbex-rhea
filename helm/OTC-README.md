@@ -33,6 +33,12 @@
     export GIT_REPO='<path-to-your-git-repo>'
     export RELEASE_NAME='my-codbex-rhea'
     export NAMESPACE='default'
+  
+    # Iliyans config
+    export KUBECONFIG='/Users/iliyan/work/work-share/projects/open-telekom-cloud/marketplace/otc-deployment/kubeconfig-marketplace-app-testing.yaml'
+    export GIT_REPO='/Users/iliyan/work/git/codbex-rhea'
+    export RELEASE_NAME='my-codbex-rhea'
+    export NAMESPACE='marketplace-testing'
     ```
 
 ## Disabled TLS
@@ -64,7 +70,7 @@ curl http://$IP/actuator/health/liveness
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-no-tls-nginx-ingress-no-tls.yaml
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-no-tls-nginx-ingress.yaml
   
 export IP='80.158.44.18'
 curl http://$IP/actuator/health/liveness

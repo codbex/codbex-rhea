@@ -1,11 +1,17 @@
-{{- if and .Values.ingress.enabled .Values.ingress.nginx.enabled .Values.ingress.tls.enabled (not .Values.ingress.otc.enabled ) }}
+{{- $ingressEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.enabled)) | trim }}
+{{- $nginxEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.nginx.enabled)) | trim }}
+{{- $otcEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.otc.enabled)) | trim }}
+{{- $tlsEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.tls.enabled)) | trim }}
+{{- $certManagerEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.tls.certManager.enabled)) | trim }}
+
+{{- if and (eq $ingressEnabled "true") (eq $nginxEnabled "true") (eq $tlsEnabled "true") (eq $otcEnabled "false") }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ .Values.name }}-ingress
   annotations:
-    {{- if .Values.ingress.tls.certManager.enabled }}
-    cert-manager.io/cluster-issuer: letsencrypt
+    {{- if eq $certManagerEnabled "true" }}
+    cert-manager.io/cluster-issuer: {{ .Values.ingress.tls.certManager.clisterIssuer }}
     {{- end }}
 
     kubernetes.io/ingress.class: nginx
