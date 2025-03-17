@@ -250,6 +250,8 @@ helm uninstall --namespace $NAMESPACE mkp-
 
 ### Test install
 ```shell
+helm uninstall --namespace $NAMESPACE mkp-
+
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
