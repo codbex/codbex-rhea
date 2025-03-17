@@ -1,9 +1,4 @@
-{{/*
-   Converts a value to a real boolean (`true` or `false`).
-   Supports both booleans (`true`/`false`) and string values (`"true"`/`"false"`).
-   Usage: {{ include "isTrue" (dict "value" .Values.someFeature.enabled) | trim | eq "true" }}
-*/}}
-{{- define "isTrue" -}}
+{{- define "booleanToStringValue" -}}
 {{- if eq (typeOf .value) "bool" -}}
   {{- if .value }}true{{- else }}false{{- end }}
 {{- else -}}
