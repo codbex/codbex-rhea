@@ -43,7 +43,7 @@ helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE
 
-export IP='80.158.108.209'
+export IP='80.158.41.251'
 curl http://$IP/actuator/health/liveness
 ```
 
@@ -74,7 +74,6 @@ curl http://$IP/actuator/health/liveness
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
-export LB_IP='80.158.91.18'
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE  --values ../example-values/values-no-tls-load-balancer-service.yaml
 
 export IP='80.158.91.18'
@@ -94,6 +93,7 @@ kubectl get ingress -n $NAMESPACE # ingress shouldn't be created
 ```shell
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
+kubectl delete secret rhea-tls-secret
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-tls-otc-autocreate-elb.yaml
 
@@ -206,7 +206,7 @@ helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-configured-volume.yaml
 
-kubectl get pvc -n $NAMESPACE
+kubectl get pvc -n $NAMESPACE # assert 4Gi SSD
 ```
 
 ### Install with configured resources
@@ -216,7 +216,7 @@ helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-configured-resources.yaml
 
-kubectl get deploy -o yaml -n $NAMESPACE
+kubectl get deploy -o yaml -n $NAMESPACE # cpu 1 to 4, memory 1Gi to 8Gi
 ```
 
 ## Other useful commands
@@ -224,7 +224,6 @@ kubectl get deploy -o yaml -n $NAMESPACE
 ### Template
 ```shell
 helm template . --debug  --wait --namespace $NAMESPACE --values ../example-values/values-tls-nginx-elb.yaml
-
 ```
 
 ### Cert manager logs
