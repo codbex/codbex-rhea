@@ -65,6 +65,7 @@ curl -v https://$SUBDOMAIN.$DOMAIN/actuator/health/liveness
 ```shell
 cd "$GIT_REPO/helm/otc/chart"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
+kubectl delete secret rhea-tls-secret
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ./example-values/values-tls-cce-existing-elb.yaml
 
