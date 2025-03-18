@@ -8,7 +8,7 @@ image:
   pullSecrets: "" # Optional, set to a secret name if needed
 
 service:
-  type: NodePort # could be NodePort and LoadBalancer - ClusterIP not supported with OTC ELB
+  type: NodePort # could be NodePort and LoadBalancer - ClusterIP not supported with CCE ELB
   loadBalancerIp: '<your-lb-ip>' # use it if type is LoadBalancer
   ports:
     http: 80

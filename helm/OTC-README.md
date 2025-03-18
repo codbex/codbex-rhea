@@ -4,7 +4,7 @@
 * [Chart installation steps](#chart-installation-steps)
   * [Disabled TLS](#disabled-tls)
     * [Default installation (with Cloud Container Engine (CCE) ingress and autocreate ELB)](#default-installation-with-cloud-container-engine-cce-ingress-and-autocreate-elb)
-    * [Install with existing OTC ELB for ingress](#install-with-existing-otc-elb-for-ingress)
+    * [Install with existing CCE ELB for ingress](#install-with-existing-otc-elb-for-ingress)
     * [Install with nginx ingress](#install-with-nginx-ingress)
     * [Install with LoadBalancer service](#install-with-loadbalancer-service)
   * [Configured TLS](#configured-tls)
@@ -48,7 +48,7 @@ export IP='80.158.41.251'
 curl http://$IP/actuator/health/liveness
 ```
 
-### Install with existing OTC ELB for ingress
+### Install with existing CCE ELB for ingress
 ```shell
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
