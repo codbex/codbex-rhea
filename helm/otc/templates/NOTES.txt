@@ -1,6 +1,6 @@
 {{- $ingressEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.enabled)) | trim }}
 {{- $nginxEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.nginx.enabled)) | trim }}
-{{- $otcEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.cce.enabled)) | trim }}
+{{- $cceEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.cce.enabled)) | trim }}
 {{- $otcAutocreateEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.cce.autocreate)) | trim }}
 {{- $tlsEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.tls.enabled)) | trim }}
 {{- $certManagerEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.tls.certmanager.enabled)) | trim }}
@@ -12,14 +12,14 @@ APP VERSION: {{ .Chart.AppVersion }}
 ** Please be patient while the chart is being deployed **
 
 {{/* Section for OTC ingress and autocreation of ELB */}}
-{{- if and (eq $ingressEnabled "true") (eq $otcEnabled "true") (eq $otcAutocreateEnabled "true") }}
+{{- if and (eq $ingressEnabled "true") (eq $cceEnabled "true") (eq $otcAutocreateEnabled "true") }}
 1. Get the application URL by running:
 
     export ELB_IP=$(kubectl get ingress {{ .Values.name }}-ingress -o jsonpath='{.metadata.annotations.kubernetes\.io/elb\.ip}' -n {{ .Release.Namespace }})
     echo "Application URL: http://$ELB_IP:{{ .Values.ingress.port }}{{ .Values.ingress.path }}"
 {{- end }}
 {{/* Section for existing OTC ELB */}}
-{{- if and (eq $ingressEnabled "true") (eq $otcEnabled "true") .Values.ingress.cce.existingELB.id (eq $tlsEnabled "false") }}
+{{- if and (eq $ingressEnabled "true") (eq $cceEnabled "true") .Values.ingress.cce.existingELB.id (eq $tlsEnabled "false") }}
 1. To access the application, open URL http://<elb-ip>:{{ .Values.ingress.port }}{{ .Values.ingress.path }} where <elb-ip> is the IP address of used OTC Elastic Load Balancer with id {{ .Values.ingress.cce.existingELB.id }}.
 {{- end }}
 {{/* Section for NGINX ingress without TLS */}}

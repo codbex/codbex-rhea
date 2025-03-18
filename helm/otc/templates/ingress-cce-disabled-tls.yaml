@@ -1,10 +1,10 @@
-# OTC ingress spec: https://docs.cce.t-systems.com/cloud-container-engine/umn/network/ingresses/loadbalancer_ingresses/using_kubectl_to_create_a_loadbalancer_ingress.html
+# OTC ingress spec: https://docs.otc.t-systems.com/cloud-container-engine/umn/network/ingresses/loadbalancer_ingresses/using_kubectl_to_create_a_loadbalancer_ingress.html
 {{- $ingressEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.enabled)) | trim }}
 {{- $nginxEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.nginx.enabled)) | trim }}
-{{- $otcEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.cce.enabled)) | trim }}
+{{- $cceEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.cce.enabled)) | trim }}
 {{- $tlsEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.tls.enabled)) | trim }}
 
-{{- if and (eq $ingressEnabled "true") (eq $otcEnabled "true") (eq $tlsEnabled "false") }}
+{{- if and (eq $ingressEnabled "true") (eq $cceEnabled "true") (eq $tlsEnabled "false") }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:

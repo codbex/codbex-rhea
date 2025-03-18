@@ -1,10 +1,10 @@
 {{- $ingressEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.enabled)) | trim }}
 {{- $nginxEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.nginx.enabled)) | trim }}
-{{- $otcEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.cce.enabled)) | trim }}
+{{- $cceEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.cce.enabled)) | trim }}
 {{- $tlsEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.tls.enabled)) | trim }}
 {{- $certManagerEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.tls.certmanager.enabled)) | trim }}
 
-{{- if and (eq $ingressEnabled "true") (eq $nginxEnabled "true") (eq $tlsEnabled "true") (eq $otcEnabled "false") }}
+{{- if and (eq $ingressEnabled "true") (eq $nginxEnabled "true") (eq $tlsEnabled "true") (eq $cceEnabled "false") }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
