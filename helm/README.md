@@ -2,6 +2,7 @@
 
 <!-- TOC -->
 * [Chart installation steps](#chart-installation-steps)
+  * [Prerequisites](#prerequisites)
   * [Configured TLS (HTTPS protocol)](#configured-tls-https-protocol)
     * [CCE ingress with autocreated ELB](#cce-ingress-with-autocreated-elb)
     * [CCE ingress with existing ELB](#cce-ingress-with-existing-elb)
@@ -27,17 +28,17 @@
     * [Test install](#test-install)
 <!-- TOC -->
 
-- Prerequisites
-    ```shell
-    export KUBECONFIG='<path-to-your-kubeconfig>'
-  
-    export GIT_REPO='<path-to-your-git-repo>'
-    export RELEASE_NAME='my-codbex-rhea'
-    export NAMESPACE='default'
-    
-    export DOMAIN='eu3.codbex.com'
-    export SUBDOMAIN='rhea-demo'
-    ```
+## Prerequisites
+```shell
+export KUBECONFIG='<path-to-your-kubeconfig>'
+
+export GIT_REPO='<path-to-your-git-repo>'
+export RELEASE_NAME='my-codbex-rhea'
+export NAMESPACE='default'
+
+export DOMAIN='eu3.codbex.com'
+export SUBDOMAIN='rhea-demo'
+```
 
 ## Configured TLS (HTTPS protocol)
 
