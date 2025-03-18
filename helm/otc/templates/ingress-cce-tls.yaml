@@ -19,7 +19,7 @@ metadata:
       '{
           "name":"{{ .Values.name }}-elb",
           "type":"public",
-          "bandwidth_name":"codbex-rhea-bandwidth",
+          "bandwidth_name":"{{ .Values.name }}-bandwidth",
           "bandwidth_chargemode":"traffic",
           "bandwidth_size":5,
           "bandwidth_sharetype":"PER",
