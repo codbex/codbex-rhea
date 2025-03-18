@@ -1,7 +1,7 @@
 {{- $ingressEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.enabled)) | trim }}
 {{- $nginxEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.nginx.enabled)) | trim }}
-{{- $otcEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.otc.enabled)) | trim }}
-{{- $otcAutocreateEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.otc.autocreate)) | trim }}
+{{- $cceEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.cce.enabled)) | trim }}
+{{- $otcAutocreateEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.cce.autocreate)) | trim }}
 {{- $tlsEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.tls.enabled)) | trim }}
 {{- $certManagerEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.tls.certmanager.enabled)) | trim }}
 
@@ -11,16 +11,16 @@ APP VERSION: {{ .Chart.AppVersion }}
 
 ** Please be patient while the chart is being deployed **
 
-{{/* Section for OTC ingress and autocreation of ELB */}}
-{{- if and (eq $ingressEnabled "true") (eq $otcEnabled "true") (eq $otcAutocreateEnabled "true") }}
+{{/* Section for CCE ingress and autocreation of ELB */}}
+{{- if and (eq $ingressEnabled "true") (eq $cceEnabled "true") (eq $otcAutocreateEnabled "true") }}
 1. Get the application URL by running:
 
     export ELB_IP=$(kubectl get ingress {{ .Values.name }}-ingress -o jsonpath='{.metadata.annotations.kubernetes\.io/elb\.ip}' -n {{ .Release.Namespace }})
     echo "Application URL: http://$ELB_IP:{{ .Values.ingress.port }}{{ .Values.ingress.path }}"
 {{- end }}
-{{/* Section for existing OTC ELB */}}
-{{- if and (eq $ingressEnabled "true") (eq $otcEnabled "true") .Values.ingress.otc.existingELB.id (eq $tlsEnabled "false") }}
-1. To access the application, open URL http://<elb-ip>:{{ .Values.ingress.port }}{{ .Values.ingress.path }} where <elb-ip> is the IP address of used OTC Elastic Load Balancer with id {{ .Values.ingress.otc.existingELB.id }}.
+{{/* Section for existing CCE ELB */}}
+{{- if and (eq $ingressEnabled "true") (eq $cceEnabled "true") .Values.ingress.cce.existingELB.id (eq $tlsEnabled "false") }}
+1. To access the application, open URL http://<elb-ip>:{{ .Values.ingress.port }}{{ .Values.ingress.path }} where <elb-ip> is the IP address of used OTC Elastic Load Balancer with id {{ .Values.ingress.cce.existingELB.id }}.
 {{- end }}
 {{/* Section for NGINX ingress without TLS */}}
 {{- if and (eq $ingressEnabled "true") (eq $nginxEnabled "true") (eq $tlsEnabled "false") }}
@@ -28,13 +28,13 @@ APP VERSION: {{ .Chart.AppVersion }}
     export ELB_IP=$(kubectl get ingress codbex-rhea-ingress -o jsonpath='{.status.loadBalancer.ingress[1].ip}' -n {{ .Release.Namespace }})
     echo "Application URL: http://$ELB_IP:{{ .Values.ingress.port }}{{ .Values.ingress.path }}"
 
-    NOTE: It may take a few minutes until the following command returns a correct URL.
+    NOTE: It may take a few seconds until the following command returns a correct URL.
 {{- end }}
 
 {{/* Section for configured TLS */}}
 {{- if and (eq $ingressEnabled "true") (eq $tlsEnabled "true") .Values.ingress.tls.host }}
-1. Open the application using https://{{ .Values.ingress.tls.host }}
-    NOTE: It may take a few minutes until the application is started
+1. Open the application at URL https://{{ .Values.ingress.tls.host }}
+    NOTE: It may take a few seconds until the application is started
 {{- end }}
 
 {{/* Section for LoadBalancer service */}}

@@ -2,7 +2,7 @@ ingress:
   enabled: "true"
   nginx:
     enabled: "true"
-  otc:
+  cce:
     autocreate: "false"
     enabled: "false"
     existing:

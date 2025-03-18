@@ -1,10 +1,10 @@
-# OTC ingress spec: https://docs.otc.t-systems.com/cloud-container-engine/umn/network/ingresses/loadbalancer_ingresses/using_kubectl_to_create_a_loadbalancer_ingress.html
+# CCE ingress spec: https://docs.otc.t-systems.com/cloud-container-engine/umn/network/ingresses/loadbalancer_ingresses/using_kubectl_to_create_a_loadbalancer_ingress.html
 {{- $ingressEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.enabled)) | trim }}
 {{- $nginxEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.nginx.enabled)) | trim }}
-{{- $otcEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.otc.enabled)) | trim }}
+{{- $cceEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.cce.enabled)) | trim }}
 {{- $tlsEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.tls.enabled)) | trim }}
 
-{{- if and (eq $ingressEnabled "true") (eq $otcEnabled "true") (eq $tlsEnabled "false") }}
+{{- if and (eq $ingressEnabled "true") (eq $cceEnabled "true") (eq $tlsEnabled "false") }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -12,13 +12,13 @@ metadata:
   annotations:
     kubernetes.io/elb.port: {{ .Values.ingress.port | quote }}
 
-    {{- if .Values.ingress.otc.autocreate }}
+    {{- if .Values.ingress.cce.autocreate }}
     kubernetes.io/elb.class: union
     kubernetes.io/elb.autocreate:
       '{
           "name":"{{ .Values.name }}-elb",
           "type":"public",
-          "bandwidth_name":"codbex-rhea-bandwidth",
+          "bandwidth_name":"{{ .Values.name }}-bandwidth",
           "bandwidth_chargemode":"traffic",
           "bandwidth_size":5,
           "bandwidth_sharetype":"PER",
@@ -26,19 +26,13 @@ metadata:
         }'
     {{- end }}
 
-    {{- if not .Values.ingress.otc.autocreate }}
-    kubernetes.io/elb.id: {{ .Values.ingress.otc.existingELB.id }} # Load balancer ID
-    kubernetes.io/elb.class: {{ .Values.ingress.otc.existingELB.class }}   # Load balancer type
+    {{- if not .Values.ingress.cce.autocreate }}
+    kubernetes.io/elb.id: {{ .Values.ingress.cce.existingELB.id }} # Load balancer ID
+    kubernetes.io/elb.class: {{ .Values.ingress.cce.existingELB.class }}   # Load balancer type
     {{- end }}
 
 spec:
-  {{- if and (eq $ingressEnabled "true") (eq $otcEnabled "true") }}
   ingressClassName: cce
-  {{- end }}
-
-  {{- if and (eq $ingressEnabled "true") (eq $nginxEnabled "true") }}
-  ingressClassName: nginx
-  {{- end }}
 
   rules:
     - http:
