@@ -1,5 +1,5 @@
 ingress:
-  otc:
+  cce:
     enabled: false
   nginx:
     enabled: true

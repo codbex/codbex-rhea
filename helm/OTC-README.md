@@ -3,13 +3,13 @@
 <!-- TOC -->
 * [Chart installation steps](#chart-installation-steps)
   * [Disabled TLS](#disabled-tls)
-    * [Default installation (with OTC ingress and autocreate ELB)](#default-installation-with-otc-ingress-and-autocreate-elb)
+    * [Default installation (with Cloud Container Engine (CCE) ingress and autocreate ELB)](#default-installation-with-cloud-container-engine-cce-ingress-and-autocreate-elb)
     * [Install with existing OTC ELB for ingress](#install-with-existing-otc-elb-for-ingress)
     * [Install with nginx ingress](#install-with-nginx-ingress)
     * [Install with LoadBalancer service](#install-with-loadbalancer-service)
-  * [Configured TSL](#configured-tsl)
-    * [OTC with autocreated ELB](#otc-with-autocreated-elb)
-    * [OTC with existing ELB](#otc-with-existing-elb)
+  * [Configured TLS](#configured-tls)
+    * [CCE ingress with autocreated ELB](#cce-ingress-with-autocreated-elb)
+    * [CCE ingress with existing ELB](#cce-ingress-with-existing-elb)
     * [Install with nginx ingress and user provided certificate](#install-with-nginx-ingress-and-user-provided-certificate)
     * [Install with nginx ingress and cert manager generated certificate](#install-with-nginx-ingress-and-cert-manager-generated-certificate)
   * [Other installation configurations](#other-installation-configurations)
@@ -37,7 +37,7 @@
 
 ## Disabled TLS
 
-### Default installation (with OTC ingress and autocreate ELB)
+### Default installation (with Cloud Container Engine (CCE) ingress and autocreate ELB)
 ```shell
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
@@ -53,7 +53,7 @@ curl http://$IP/actuator/health/liveness
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-no-tls-existing-elb.yaml
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-no-tls-cce-existing-elb.yaml
  
 export IP='80.158.91.18'
 curl http://$IP/actuator/health/liveness
@@ -84,13 +84,13 @@ kubectl get service -n $NAMESPACE # service should be of type LoadBalancer
 kubectl get ingress -n $NAMESPACE # ingress shouldn't be created
 ```
 
-## Configured TSL
+## Configured TLS
 
 - Prerequisites
   - Configured DNS in OTC for `eu3.codbex.com`
   - Record for subdomain `rhea-demo` which directs to the needed IP
 
-### OTC with autocreated ELB
+### CCE ingress with autocreated ELB
 ```shell
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
@@ -102,12 +102,12 @@ helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-v
 curl https://rhea-demo.eu3.codbex.com/actuator/health/liveness
 ```
 
-### OTC with existing ELB
+### CCE ingress with existing ELB
 ```shell
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-tls-existing-elb.yaml
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-tls-cce-existing-elb.yaml
 
 # update subdomain record set to use the existing ELB IP 
 curl https://rhea-demo.eu3.codbex.com/actuator/health/liveness

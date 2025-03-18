@@ -1,7 +1,7 @@
 {{- $ingressEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.enabled)) | trim }}
 {{- $nginxEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.nginx.enabled)) | trim }}
-{{- $otcEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.otc.enabled)) | trim }}
-{{- $otcAutocreateEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.otc.autocreate)) | trim }}
+{{- $otcEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.cce.enabled)) | trim }}
+{{- $otcAutocreateEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.cce.autocreate)) | trim }}
 {{- $tlsEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.tls.enabled)) | trim }}
 {{- $certManagerEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.tls.certmanager.enabled)) | trim }}
 
@@ -19,8 +19,8 @@ APP VERSION: {{ .Chart.AppVersion }}
     echo "Application URL: http://$ELB_IP:{{ .Values.ingress.port }}{{ .Values.ingress.path }}"
 {{- end }}
 {{/* Section for existing OTC ELB */}}
-{{- if and (eq $ingressEnabled "true") (eq $otcEnabled "true") .Values.ingress.otc.existingELB.id (eq $tlsEnabled "false") }}
-1. To access the application, open URL http://<elb-ip>:{{ .Values.ingress.port }}{{ .Values.ingress.path }} where <elb-ip> is the IP address of used OTC Elastic Load Balancer with id {{ .Values.ingress.otc.existingELB.id }}.
+{{- if and (eq $ingressEnabled "true") (eq $otcEnabled "true") .Values.ingress.cce.existingELB.id (eq $tlsEnabled "false") }}
+1. To access the application, open URL http://<elb-ip>:{{ .Values.ingress.port }}{{ .Values.ingress.path }} where <elb-ip> is the IP address of used OTC Elastic Load Balancer with id {{ .Values.ingress.cce.existingELB.id }}.
 {{- end }}
 {{/* Section for NGINX ingress without TLS */}}
 {{- if and (eq $ingressEnabled "true") (eq $nginxEnabled "true") (eq $tlsEnabled "false") }}

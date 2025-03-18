@@ -17,7 +17,7 @@ ingress:
   enabled: true
   path: '/'
   port: 80
-  otc: # OTC ingress configs
+  cce: # Cloud Container Engine (CCE) ingress configs
     enabled: true
     autocreate: true
     existingELB:
