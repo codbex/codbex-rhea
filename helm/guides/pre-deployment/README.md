@@ -15,10 +15,10 @@ The following documentation shows example values which should be set for the dif
       * [Existing CCE ELB for ingress](#existing-cce-elb-for-ingress)
       * [NGINX ingress](#nginx-ingress)
     * [Other installation configuration options](#other-installation-configuration-options)
-      * [Configured admin user](#configured-admin-user)
-      * [Disabled volumes](#disabled-volumes)
-      * [Configured volumes](#configured-volumes)
-      * [Configured resources](#configured-resources)
+      * [Configure admin user](#configure-admin-user)
+      * [Disable volumes](#disable-volumes)
+      * [Configure volumes](#configure-volumes)
+      * [Configure resources](#configure-resources)
 <!-- TOC -->
 
 ## Installation options
@@ -70,14 +70,14 @@ No additional configurations are required since this is the default setup.
 
 ### Other installation configuration options
 
-#### Configured admin user
+#### Configure admin user
 ![configured-user.png](images/configured-user.png)
 
-#### Disabled volumes
+#### Disable volumes
 ![disabled-volume.png](images/disabled-volume.png)
 
-#### Configured volumes
+#### Configure volumes
 ![configured-volume.png](images/configured-volume.png)
 
-#### Configured resources
+#### Configure resources
 ![configured-resources.png](images/configured-resources.png)

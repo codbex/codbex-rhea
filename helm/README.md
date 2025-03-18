@@ -14,10 +14,10 @@
     * [NGINX ingress](#nginx-ingress)
     * [LoadBalancer service](#loadbalancer-service)
   * [Other installation configuration options](#other-installation-configuration-options)
-    * [Configured admin user](#configured-admin-user)
-    * [Disabled volumes](#disabled-volumes)
-    * [Configured volumes](#configured-volumes)
-    * [Configured resources](#configured-resources)
+    * [Configure admin user](#configure-admin-user)
+    * [Disable volumes](#disable-volumes)
+    * [Configure volumes](#configure-volumes)
+    * [Configure resources](#configure-resources)
   * [Other useful commands](#other-useful-commands)
     * [Template](#template)
     * [Cert manager logs](#cert-manager-logs)
@@ -195,7 +195,7 @@ kubectl get ingress -n $NAMESPACE # ingress shouldn't be created
 
 ## Other installation configuration options
 
-### Configured admin user
+### Configure admin user
 ```shell
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
@@ -205,7 +205,7 @@ helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-v
 # open the application and login with configured credentials
 ```
 
-### Disabled volumes
+### Disable volumes
 ```shell
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
@@ -215,7 +215,7 @@ helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-v
 kubectl get pvc -n $NAMESPACE # should return nothing
 ```
 
-### Configured volumes
+### Configure volumes
 ```shell
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
@@ -225,7 +225,7 @@ helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-v
 kubectl get pvc -n $NAMESPACE # assert capacity `4Gi` and storage class `ssd`
 ```
 
-### Configured resources
+### Configure resources
 ```shell
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
