@@ -1,4 +1,4 @@
-# OTC ingress spec: https://docs.otc.t-systems.com/cloud-container-engine/umn/network/ingresses/loadbalancer_ingresses/using_kubectl_to_create_a_loadbalancer_ingress.html
+# CCE ingress spec: https://docs.otc.t-systems.com/cloud-container-engine/umn/network/ingresses/loadbalancer_ingresses/using_kubectl_to_create_a_loadbalancer_ingress.html
 {{- $ingressEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.enabled)) | trim }}
 {{- $nginxEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.nginx.enabled)) | trim }}
 {{- $cceEnabled := (include "booleanToStringValue" (dict "value" .Values.ingress.cce.enabled)) | trim }}

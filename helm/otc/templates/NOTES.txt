@@ -11,7 +11,7 @@ APP VERSION: {{ .Chart.AppVersion }}
 
 ** Please be patient while the chart is being deployed **
 
-{{/* Section for OTC ingress and autocreation of ELB */}}
+{{/* Section for CCE ingress and autocreation of ELB */}}
 {{- if and (eq $ingressEnabled "true") (eq $cceEnabled "true") (eq $otcAutocreateEnabled "true") }}
 1. Get the application URL by running:
 
