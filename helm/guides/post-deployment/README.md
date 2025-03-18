@@ -13,12 +13,7 @@ The following documentation describes what post-deployment configurations need t
       * [CCE ingress and autocreate ELB (default installation)](#cce-ingress-and-autocreate-elb-default-installation)
       * [Existing CCE ELB for ingress](#existing-cce-elb-for-ingress)
       * [NGINX ingress](#nginx-ingress)
-      * [LoadBalancer service](#loadbalancer-service)
-    * [Other installation configuration options](#other-installation-configuration-options)
-      * [Configured admin user](#configured-admin-user)
-      * [Disabled volumes](#disabled-volumes)
-      * [Configured volumes](#configured-volumes)
-      * [Configure resources](#configure-resources)
+  * [Login](#login)
 <!-- TOC -->
 
 ## Installation options
@@ -55,23 +50,23 @@ __Prerequisites__
 ### Disabled TLS (HTTP protocol)
 
 #### CCE ingress and autocreate ELB (default installation)
+Execute the following script to get the application URL.
+The example uses namespace `marketplace-testing`
+```shell
+export ELB_IP=$(kubectl get ingress codbex-rhea-ingress -o jsonpath='{.metadata.annotations.kubernetes\.io/elb\.ip}' -n marketplace-testing)
+echo "Application URL: http://$ELB_IP:80"
+```
 
 #### Existing CCE ELB for ingress
-
+To access the application, open URL `http://<elb-ip>:80` where <elb-ip> is the IP address of used existing OTC Elastic Load Balancer.
 
 #### NGINX ingress
+Execute the following script to get the application URL.
+The example uses namespace `marketplace-testing`
+```shell
+export ELB_IP=$(kubectl get ingress codbex-rhea-ingress -o jsonpath='{.status.loadBalancer.ingress[1].ip}' -n marketplace-testing)
+echo "Application URL: http://$ELB_IP:80"
+```
 
-
-#### LoadBalancer service
-
----
-
-### Other installation configuration options
-
-#### Configured admin user
-
-#### Disabled volumes
-
-#### Configured volumes
-
-#### Configure resources
+## Login
+Default credentials are username `admin` and password `admin`, unless you have specified custom credentials.

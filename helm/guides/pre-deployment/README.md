@@ -14,7 +14,6 @@ The following documentation shows example values which should be set for the dif
       * [CCE ingress and autocreate ELB (default installation)](#cce-ingress-and-autocreate-elb-default-installation)
       * [Existing CCE ELB for ingress](#existing-cce-elb-for-ingress)
       * [NGINX ingress](#nginx-ingress)
-      * [LoadBalancer service](#loadbalancer-service)
     * [Other installation configuration options](#other-installation-configuration-options)
       * [Configured admin user](#configured-admin-user)
       * [Disabled volumes](#disabled-volumes)
@@ -56,21 +55,29 @@ The following documentation shows example values which should be set for the dif
 ### Disabled TLS (HTTP protocol)
 
 #### CCE ingress and autocreate ELB (default installation)
+No additional configurations are required since this is the default setup.
 
 #### Existing CCE ELB for ingress
+![no-tls-cce-existing-elb.png](images/no-tls-cce-existing-elb.png)
 
 #### NGINX ingress
+- Prerequisites
+  - Configured NGINX ingress ELB. Check [this blog](https://community.open-telekom-cloud.com/community?id=community_blog&sys_id=08f3fb40132c0190d15ac969a674412b#:~:text=own%20nginx%20ingress-,controller,-It%20is%20very) for more details.
 
-#### LoadBalancer service
+![no-tls-nginx-ingress.png](images/no-tls-nginx-ingress.png)
 
 ---
 
 ### Other installation configuration options
 
 #### Configured admin user
+![configured-user.png](images/configured-user.png)
 
 #### Disabled volumes
+![disabled-volume.png](images/disabled-volume.png)
 
 #### Configured volumes
+![configured-volume.png](images/configured-volume.png)
 
 #### Configured resources
+![configured-resources.png](images/configured-resources.png)

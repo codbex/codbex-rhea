@@ -25,7 +25,7 @@ APP VERSION: {{ .Chart.AppVersion }}
 {{/* Section for NGINX ingress without TLS */}}
 {{- if and (eq $ingressEnabled "true") (eq $nginxEnabled "true") (eq $tlsEnabled "false") }}
 1. Get the application URL by running:
-    export ELB_IP=$(kubectl get ingress codbex-rhea-ingress -o jsonpath='{.status.loadBalancer.ingress[1].ip}' -n {{ .Release.Namespace }})
+    export ELB_IP=$(kubectl get ingress {{ .Values.name }}-ingress -o jsonpath='{.status.loadBalancer.ingress[1].ip}' -n {{ .Release.Namespace }})
     echo "Application URL: http://$ELB_IP:{{ .Values.ingress.port }}{{ .Values.ingress.path }}"
 
     NOTE: It may take a few seconds until the following command returns a correct URL.
