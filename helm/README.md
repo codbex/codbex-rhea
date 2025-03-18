@@ -6,18 +6,18 @@
   * [Configured TLS (HTTPS protocol)](#configured-tls-https-protocol)
     * [CCE ingress with autocreated ELB](#cce-ingress-with-autocreated-elb)
     * [CCE ingress with existing ELB](#cce-ingress-with-existing-elb)
-    * [Install with nginx ingress and user provided certificate](#install-with-nginx-ingress-and-user-provided-certificate)
-    * [Install with nginx ingress and cert manager generated certificate](#install-with-nginx-ingress-and-cert-manager-generated-certificate)
+    * [NGINX ingress and user provided certificate](#nginx-ingress-and-user-provided-certificate)
+    * [NGINX ingress and cert manager generated certificate](#nginx-ingress-and-cert-manager-generated-certificate)
   * [Disabled TLS (HTTP protocol)](#disabled-tls-http-protocol)
-    * [Cloud Container Engine (CCE) ingress and autocreate ELB (default installation)](#cloud-container-engine-cce-ingress-and-autocreate-elb-default-installation)
-    * [Install with existing CCE ELB for ingress](#install-with-existing-cce-elb-for-ingress)
-    * [Install with nginx ingress](#install-with-nginx-ingress)
-    * [Install with LoadBalancer service](#install-with-loadbalancer-service)
+    * [CCE ingress and autocreate ELB (default installation)](#cce-ingress-and-autocreate-elb-default-installation)
+    * [Existing CCE ELB for ingress](#existing-cce-elb-for-ingress)
+    * [NGINX ingress](#nginx-ingress)
+    * [LoadBalancer service](#loadbalancer-service)
   * [Other installation configuration options](#other-installation-configuration-options)
-    * [Install with configured user](#install-with-configured-user)
-    * [Install with disabled volumes](#install-with-disabled-volumes)
-    * [Install with configured volumes](#install-with-configured-volumes)
-    * [Install with configured resources](#install-with-configured-resources)
+    * [Configured admin user](#configured-admin-user)
+    * [Disabled volumes](#disabled-volumes)
+    * [Configured volumes](#configured-volumes)
+    * [Configured resources](#configured-resources)
   * [Other useful commands](#other-useful-commands)
     * [Template](#template)
     * [Cert manager logs](#cert-manager-logs)
@@ -40,11 +40,13 @@ export DOMAIN='eu3.codbex.com'
 export SUBDOMAIN='rhea-demo'
 ```
 
+---
+
 ## Configured TLS (HTTPS protocol)
 
 - Prerequisites
   - Configured DNS in OTC for your domain - for example for `eu3.codbex.com`
-  - Record for testing subdomain (for example `rhea-demo`) which directs to the needed ELB IP
+  - Record for testing subdomain (for example `rhea-demo`) which directs to the created ELB IP
 
 ### CCE ingress with autocreated ELB
 ```shell
@@ -70,7 +72,7 @@ helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-v
 curl -v https://$SUBDOMAIN.$DOMAIN/actuator/health/liveness
 ```
 
-### Install with nginx ingress and user provided certificate
+### NGINX ingress and user provided certificate
 ```shell
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
@@ -81,7 +83,7 @@ helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-v
 curl -v https://$SUBDOMAIN.$DOMAIN/actuator/health/liveness
 ```
 
-### Install with nginx ingress and cert manager generated certificate
+### NGINX ingress and cert manager generated certificate
 - Prerequisites
   - Install cert manager in the cluster
     ```shell
@@ -134,9 +136,11 @@ helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-v
 curl -v https://$SUBDOMAIN.$DOMAIN/actuator/health/liveness
 ```
 
+---
+
 ## Disabled TLS (HTTP protocol)
 
-### Cloud Container Engine (CCE) ingress and autocreate ELB (default installation)
+###  CCE ingress and autocreate ELB (default installation)
 ```shell
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
@@ -148,7 +152,7 @@ export IP='80.158.44.137'
 curl -v http://$IP/actuator/health/liveness
 ```
 
-### Install with existing CCE ELB for ingress
+### Existing CCE ELB for ingress
 ```shell
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
@@ -160,7 +164,7 @@ export IP='80.158.91.18'
 curl -v http://$IP/actuator/health/liveness
 ```
 
-### Install with nginx ingress
+### NGINX ingress
 ```shell
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
@@ -172,7 +176,7 @@ export IP='80.158.44.18'
 curl -v http://$IP/actuator/health/liveness
 ```
 
-### Install with LoadBalancer service
+### LoadBalancer service
 ```shell
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
@@ -187,9 +191,11 @@ kubectl get service -n $NAMESPACE # service should be of type LoadBalancer
 kubectl get ingress -n $NAMESPACE # ingress shouldn't be created
 ```
 
+---
+
 ## Other installation configuration options
 
-### Install with configured user
+### Configured admin user
 ```shell
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
@@ -199,7 +205,7 @@ helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-v
 # open the application and login with configured credentials
 ```
 
-### Install with disabled volumes
+### Disabled volumes
 ```shell
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
@@ -209,7 +215,7 @@ helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-v
 kubectl get pvc -n $NAMESPACE # should return nothing
 ```
 
-### Install with configured volumes
+### Configured volumes
 ```shell
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
@@ -219,7 +225,7 @@ helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-v
 kubectl get pvc -n $NAMESPACE # assert capacity `4Gi` and storage class `ssd`
 ```
 
-### Install with configured resources
+### Configured resources
 ```shell
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE

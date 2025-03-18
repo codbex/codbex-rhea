@@ -1,23 +1,25 @@
 # Pre-deployment guide
 
+The following documentation shows example values which should be set for the different installation options.
+
 <!-- TOC -->
 * [Pre-deployment guide](#pre-deployment-guide)
   * [Installation options](#installation-options)
     * [Configured TLS (HTTPS protocol)](#configured-tls-https-protocol)
       * [CCE ingress with autocreated ELB](#cce-ingress-with-autocreated-elb)
       * [CCE ingress with existing ELB](#cce-ingress-with-existing-elb)
-      * [Install with nginx ingress and user provided certificate](#install-with-nginx-ingress-and-user-provided-certificate)
-      * [Install with nginx ingress and cert manager generated certificate](#install-with-nginx-ingress-and-cert-manager-generated-certificate)
+      * [NGINX ingress and user provided certificate](#nginx-ingress-and-user-provided-certificate)
+      * [NGINX ingress and cert manager generated certificate](#nginx-ingress-and-cert-manager-generated-certificate)
     * [Disabled TLS (HTTP protocol)](#disabled-tls-http-protocol)
-      * [Cloud Container Engine (CCE) ingress and autocreate ELB (default installation)](#cloud-container-engine-cce-ingress-and-autocreate-elb-default-installation)
-      * [Install with existing CCE ELB for ingress](#install-with-existing-cce-elb-for-ingress)
-      * [Install with nginx ingress](#install-with-nginx-ingress)
-      * [Install with LoadBalancer service](#install-with-loadbalancer-service)
+      * [CCE ingress and autocreate ELB (default installation)](#cce-ingress-and-autocreate-elb-default-installation)
+      * [Existing CCE ELB for ingress](#existing-cce-elb-for-ingress)
+      * [NGINX ingress](#nginx-ingress)
+      * [LoadBalancer service](#loadbalancer-service)
     * [Other installation configuration options](#other-installation-configuration-options)
-      * [Install with configured user](#install-with-configured-user)
-      * [Install with disabled volumes](#install-with-disabled-volumes)
-      * [Install with configured volumes](#install-with-configured-volumes)
-      * [Install with configured resources](#install-with-configured-resources)
+      * [Configured admin user](#configured-admin-user)
+      * [Disabled volumes](#disabled-volumes)
+      * [Configured volumes](#configured-volumes)
+      * [Configured resources](#configured-resources)
 <!-- TOC -->
 
 ## Installation options
@@ -25,80 +27,50 @@
 ### Configured TLS (HTTPS protocol)
 
 - Prerequisites
-    - Configured DNS in OTC for your domain - for example for `eu3.codbex.com`
+    - Configured DNS in OTC for your domain - example domain `eu3.codbex.com`<br>
+      OTC relates blog [here](https://community.open-telekom-cloud.com/community?id=community_blog&sys_id=38d6b3cf1324d050d15a246ea6744153).
+      ![dns-example.png](images/dns-example.png)
     - Record for testing subdomain (for example `rhea-demo`) which directs to the needed ELB IP
+      ![dns-subdomain.png](images/dns-subdomain.png)
 
 #### CCE ingress with autocreated ELB
-
+![tls-otc-autocreate-elb.png](images/tls-otc-autocreate-elb.png)
 
 #### CCE ingress with existing ELB
+![tls-cce-existing-elb.png](images/tls-cce-existing-elb.png)
 
-#### Install with nginx ingress and user provided certificate
-
-#### Install with nginx ingress and cert manager generated certificate
+#### NGINX ingress and user provided certificate
 - Prerequisites
-  - Install cert manager in the cluster
+  - Configured NGINX ingress ELB. Check [this blog](https://community.open-telekom-cloud.com/community?id=community_blog&sys_id=08f3fb40132c0190d15ac969a674412b#:~:text=own%20nginx%20ingress-,controller,-It%20is%20very) for more details.
 
-    ```shell
-    helm uninstall cert-manager -n cert-manager --wait
-      
-    helm repo add jetstack https://charts.jetstack.io
-    helm repo update
-      
-    helm install cert-manager jetstack/cert-manager --set installCRDs=true --namespace cert-manager --create-namespace --version v1.9.1
-    ```
-    
-  - Create file `cluster-issuer.yaml` with the following content
+![tls-nginx-elb-user-cert.png](images/tls-nginx-elb-user-cert.png)
 
-    ```yaml
-    apiVersion: cert-manager.io/v1
-    kind: ClusterIssuer
-    metadata:
-      name: letsencrypt
-    spec:
-      acme:
-        # You must replace this email address with your own.
-        # Let's Encrypt will use this to contact you about expiring
-        # certificates, and issues related to your account.
-        email: <YOUR_EMAIL>
-        server: https://acme-v02.api.letsencrypt.org/directory
-        privateKeySecretRef:
-          # Secret resource that will be used to store the account's private key.
-          name: letsencrypt
-        # Add a single challenge solver, HTTP01 using nginx
-        solvers:
-          - http01:
-              ingress:
-                ingressTemplate:
-                  metadata:
-                    annotations:
-                      "cert-manager.io/issue-temporary-certificate": "true"
-                      "kubernetes.io/ingress.class": nginx 
-                      "certmanager.k8s.io/cluster-issuer": letsencrypt
-    
-    ```
+#### NGINX ingress and cert manager generated certificate
+- Prerequisites
+  - Configured cert-manager in your cluster. Check [this blog](https://community.open-telekom-cloud.com/community?id=community_blog&sys_id=fd976f1713529150d15a246ea67441e0) for more details.
 
-  - Replace `<YOUR_EMAIL>` with your email address
-  - Apply the file `kubectl apply -f cluster-issuer.yaml -n cert-manager`
+![tls-nginx-cert-manage.png](images/tls-nginx-cert-manage.png)
+
+---
 
 ### Disabled TLS (HTTP protocol)
 
-#### Cloud Container Engine (CCE) ingress and autocreate ELB (default installation)
+#### CCE ingress and autocreate ELB (default installation)
 
-#### Install with existing CCE ELB for ingress
+#### Existing CCE ELB for ingress
 
+#### NGINX ingress
 
-#### Install with nginx ingress
+#### LoadBalancer service
 
-
-#### Install with LoadBalancer service
+---
 
 ### Other installation configuration options
 
-#### Install with configured user
+#### Configured admin user
 
-#### Install with disabled volumes
+#### Disabled volumes
 
-#### Install with configured volumes
+#### Configured volumes
 
-#### Install with configured resources
+#### Configured resources
