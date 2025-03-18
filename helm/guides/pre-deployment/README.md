@@ -11,3 +11,6 @@
 #### Default installation (with Cloud Container Engine (CCE) ingress and autocreate ELB)
 
 ### Disabled TLS
+
+#### Cloud Container Engine (CCE) ingress and autocreate ELB
+

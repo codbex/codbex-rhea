@@ -28,13 +28,13 @@ APP VERSION: {{ .Chart.AppVersion }}
     export ELB_IP=$(kubectl get ingress codbex-rhea-ingress -o jsonpath='{.status.loadBalancer.ingress[1].ip}' -n {{ .Release.Namespace }})
     echo "Application URL: http://$ELB_IP:{{ .Values.ingress.port }}{{ .Values.ingress.path }}"
 
-    NOTE: It may take a few minutes until the following command returns a correct URL.
+    NOTE: It may take a few seconds until the following command returns a correct URL.
 {{- end }}
 
 {{/* Section for configured TLS */}}
 {{- if and (eq $ingressEnabled "true") (eq $tlsEnabled "true") .Values.ingress.tls.host }}
-1. Open the application using https://{{ .Values.ingress.tls.host }}
-    NOTE: It may take a few minutes until the application is started
+1. Open the application at URL https://{{ .Values.ingress.tls.host }}
+    NOTE: It may take a few seconds until the application is started
 {{- end }}
 
 {{/* Section for LoadBalancer service */}}

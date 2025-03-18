@@ -2,12 +2,12 @@
 
 <!-- TOC -->
 * [Chart installation steps](#chart-installation-steps)
-  * [Disabled TLS](#disabled-tls)
-    * [Default installation (with Cloud Container Engine (CCE) ingress and autocreate ELB)](#default-installation-with-cloud-container-engine-cce-ingress-and-autocreate-elb)
-    * [Install with existing CCE ELB for ingress](#install-with-existing-otc-elb-for-ingress)
+  * [Disabled TLS (HTTP protocol)](#disabled-tls-http-protocol)
+    * [Cloud Container Engine (CCE) ingress and autocreate ELB (default installation)](#cloud-container-engine-cce-ingress-and-autocreate-elb-default-installation)
+    * [Install with existing CCE ELB for ingress](#install-with-existing-cce-elb-for-ingress)
     * [Install with nginx ingress](#install-with-nginx-ingress)
     * [Install with LoadBalancer service](#install-with-loadbalancer-service)
-  * [Configured TLS](#configured-tls)
+  * [Configured TLS (HTTPS protocol)](#configured-tls-https-protocol)
     * [CCE ingress with autocreated ELB](#cce-ingress-with-autocreated-elb)
     * [CCE ingress with existing ELB](#cce-ingress-with-existing-elb)
     * [Install with nginx ingress and user provided certificate](#install-with-nginx-ingress-and-user-provided-certificate)
@@ -22,6 +22,7 @@
     * [Cert manager logs](#cert-manager-logs)
     * [List all marketplace installations](#list-all-marketplace-installations)
     * [List actual values used for deployment in helm](#list-actual-values-used-for-deployment-in-helm)
+    * [Uninstall testing chart](#uninstall-testing-chart)
     * [Uninstall marketplace chart](#uninstall-marketplace-chart)
     * [Test install](#test-install)
 <!-- TOC -->
@@ -33,19 +34,23 @@
     export GIT_REPO='<path-to-your-git-repo>'
     export RELEASE_NAME='my-codbex-rhea'
     export NAMESPACE='default'
+    
+    export DOMAIN='eu3.codbex.com'
+    export SUBDOMAIN='rhea-demo'
     ```
 
-## Disabled TLS
+## Disabled TLS (HTTP protocol)
 
-### Default installation (with Cloud Container Engine (CCE) ingress and autocreate ELB)
+### Cloud Container Engine (CCE) ingress and autocreate ELB (default installation)
 ```shell
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE
 
-export IP='80.158.41.251'
-curl http://$IP/actuator/health/liveness
+# get the generated IP using the command which is generated after the installation
+export IP='80.158.44.137' 
+curl -v http://$IP/actuator/health/liveness
 ```
 
 ### Install with existing CCE ELB for ingress
@@ -54,9 +59,10 @@ cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-no-tls-cce-existing-elb.yaml
- 
+
+# set the IP of the existing CCE ELB
 export IP='80.158.91.18'
-curl http://$IP/actuator/health/liveness
+curl -v http://$IP/actuator/health/liveness
 ```
 
 ### Install with nginx ingress
@@ -65,9 +71,10 @@ cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-no-tls-nginx-ingress.yaml
-  
+
+# get the nginx ELB IP using the command which is generated after the installation
 export IP='80.158.44.18'
-curl http://$IP/actuator/health/liveness
+curl -v http://$IP/actuator/health/liveness
 ```
 
 ### Install with LoadBalancer service
@@ -77,18 +84,19 @@ helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE  --values ../example-values/values-no-tls-load-balancer-service.yaml
 
+# get the IP using the command which is generated after the installation
 export IP='80.158.91.18'
-curl http://$IP/actuator/health/liveness
+curl -v http://$IP/actuator/health/liveness
 
 kubectl get service -n $NAMESPACE # service should be of type LoadBalancer
 kubectl get ingress -n $NAMESPACE # ingress shouldn't be created
 ```
 
-## Configured TLS
+## Configured TLS (HTTPS protocol)
 
 - Prerequisites
-  - Configured DNS in OTC for `eu3.codbex.com`
-  - Record for subdomain `rhea-demo` which directs to the needed IP
+  - Configured DNS in OTC for your domain - for example for `eu3.codbex.com`
+  - Record for testing subdomain (for example `rhea-demo`) which directs to the needed ELB IP
 
 ### CCE ingress with autocreated ELB
 ```shell
@@ -98,8 +106,9 @@ kubectl delete secret rhea-tls-secret
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-tls-otc-autocreate-elb.yaml
 
-# update subdomain record set to use the created ELB IP 
-curl https://rhea-demo.eu3.codbex.com/actuator/health/liveness
+# update subdomain record set in OTC console to use the created ELB IP
+# get the ELB IP using the command which is generated after the installation
+curl -v https://$SUBDOMAIN.$DOMAIN/actuator/health/liveness
 ```
 
 ### CCE ingress with existing ELB
@@ -110,7 +119,7 @@ helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-tls-cce-existing-elb.yaml
 
 # update subdomain record set to use the existing ELB IP 
-curl https://rhea-demo.eu3.codbex.com/actuator/health/liveness
+curl -v https://$SUBDOMAIN.$DOMAIN/actuator/health/liveness
 ```
 
 ### Install with nginx ingress and user provided certificate
@@ -121,7 +130,7 @@ helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-tls-nginx-elb-user-cert.yaml
 
 # update subdomain record set to use the nginx ELB IP 
-curl https://rhea-demo.eu3.codbex.com/actuator/health/liveness
+curl -v https://$SUBDOMAIN.$DOMAIN/actuator/health/liveness
 ```
 
 ### Install with nginx ingress and cert manager generated certificate
@@ -174,7 +183,7 @@ helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-tls-nginx-cert-manager.yaml
 
 # update subdomain record set to use the nginx ELB IP 
-curl https://rhea-demo.eu3.codbex.com/actuator/health/liveness
+curl -v https://$SUBDOMAIN.$DOMAIN/actuator/health/liveness
 ```
 
 
@@ -187,7 +196,7 @@ helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-configured-user.yaml
 
-# test login with configured credentials
+# open the application and login with configured credentials
 ```
 
 ### Install with disabled volumes
@@ -197,7 +206,7 @@ helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-disabled-volume.yaml
  
-kubectl get pvc -n $NAMESPACE
+kubectl get pvc -n $NAMESPACE # should return nothing
 ```
 
 ### Install with configured volumes
@@ -207,7 +216,7 @@ helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-configured-volume.yaml
 
-kubectl get pvc -n $NAMESPACE # assert 4Gi SSD
+kubectl get pvc -n $NAMESPACE # assert capacity `4Gi` and storage class `ssd`
 ```
 
 ### Install with configured resources
@@ -224,12 +233,14 @@ kubectl get deploy -o yaml -n $NAMESPACE # cpu 1 to 4, memory 1Gi to 8Gi
 
 ### Template
 ```shell
-helm template . --debug  --wait --namespace $NAMESPACE --values ../example-values/values-tls-nginx-elb.yaml
+cd "$GIT_REPO/helm/otc"
+helm template . --debug  --wait --namespace $NAMESPACE --values ../example-values/values-test.yaml
 ```
 
 ### Cert manager logs
 ```shell
 # paste the following and click tab to autocomplete the pod
+# example pod name `cert-manager-776d69949d-tmq2g `
 kubectl logs -n cert-manager --follow cert-manager-
 ```
 
@@ -241,6 +252,12 @@ watch helm list --namespace $NAMESPACE
 ### List actual values used for deployment in helm
 ```shell
 helm get values -n $NAMESPACE mkp-
+```
+
+### Uninstall testing chart
+```shell
+cd "$GIT_REPO/helm/otc"
+helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 ```
 
 ### Uninstall marketplace chart
@@ -255,6 +272,7 @@ helm uninstall --namespace $NAMESPACE mkp-
 cd "$GIT_REPO/helm/otc"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
+# Render chart templates locally and display the output
 helm template . --debug  --wait --namespace $NAMESPACE --values ../example-values/values-test.yaml
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-test.yaml
