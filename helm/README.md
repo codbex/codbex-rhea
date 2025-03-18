@@ -50,11 +50,11 @@ export SUBDOMAIN='rhea-demo'
 
 ### CCE ingress with autocreated ELB
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd "$GIT_REPO/helm/otc/chart"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 kubectl delete secret rhea-tls-secret
 
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-tls-otc-autocreate-elb.yaml
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ./example-values/values-tls-otc-autocreate-elb.yaml
 
 # update subdomain record set in OTC console to use the created ELB IP
 # get the ELB IP using the command which is generated after the installation
@@ -63,10 +63,10 @@ curl -v https://$SUBDOMAIN.$DOMAIN/actuator/health/liveness
 
 ### CCE ingress with existing ELB
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd "$GIT_REPO/helm/otc/chart"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-tls-cce-existing-elb.yaml
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ./example-values/values-tls-cce-existing-elb.yaml
 
 # update subdomain record set to use the existing ELB IP 
 curl -v https://$SUBDOMAIN.$DOMAIN/actuator/health/liveness
@@ -74,10 +74,10 @@ curl -v https://$SUBDOMAIN.$DOMAIN/actuator/health/liveness
 
 ### NGINX ingress and user provided certificate
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd "$GIT_REPO/helm/otc/chart"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-tls-nginx-elb-user-cert.yaml
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ./example-values/values-tls-nginx-elb-user-cert.yaml
 
 # update subdomain record set to use the nginx ELB IP 
 curl -v https://$SUBDOMAIN.$DOMAIN/actuator/health/liveness
@@ -127,10 +127,10 @@ curl -v https://$SUBDOMAIN.$DOMAIN/actuator/health/liveness
   - Apply the file `kubectl apply -f cluster-issuer.yaml -n cert-manager`
 
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd "$GIT_REPO/helm/otc/chart"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-tls-nginx-cert-manager.yaml
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ./example-values/values-tls-nginx-cert-manager.yaml
 
 # update subdomain record set to use the nginx ELB IP 
 curl -v https://$SUBDOMAIN.$DOMAIN/actuator/health/liveness
@@ -142,7 +142,7 @@ curl -v https://$SUBDOMAIN.$DOMAIN/actuator/health/liveness
 
 ###  CCE ingress and autocreate ELB (default installation)
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd "$GIT_REPO/helm/otc/chart"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
 helm install $RELEASE_NAME . --wait --namespace $NAMESPACE
@@ -154,10 +154,10 @@ curl -v http://$IP/actuator/health/liveness
 
 ### Existing CCE ELB for ingress
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd "$GIT_REPO/helm/otc/chart"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-no-tls-cce-existing-elb.yaml
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ./example-values/values-no-tls-cce-existing-elb.yaml
 
 # set the IP of the existing CCE ELB
 export IP='80.158.91.18'
@@ -166,10 +166,10 @@ curl -v http://$IP/actuator/health/liveness
 
 ### NGINX ingress
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd "$GIT_REPO/helm/otc/chart"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-no-tls-nginx-ingress.yaml
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ./example-values/values-no-tls-nginx-ingress.yaml
 
 # get the nginx ELB IP using the command which is generated after the installation
 export IP='80.158.44.18'
@@ -178,10 +178,10 @@ curl -v http://$IP/actuator/health/liveness
 
 ### LoadBalancer service
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd "$GIT_REPO/helm/otc/chart"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE  --values ../example-values/values-no-tls-load-balancer-service.yaml
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE  --values ./example-values/values-no-tls-load-balancer-service.yaml
 
 # get the IP using the command which is generated after the installation
 export IP='80.158.91.18'
@@ -197,40 +197,40 @@ kubectl get ingress -n $NAMESPACE # ingress shouldn't be created
 
 ### Configure admin user
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd "$GIT_REPO/helm/otc/chart"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-configured-user.yaml
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ./example-values/values-configured-user.yaml
 
 # open the application and login with configured credentials
 ```
 
 ### Disable volumes
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd "$GIT_REPO/helm/otc/chart"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-disabled-volume.yaml
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ./example-values/values-disabled-volume.yaml
  
 kubectl get pvc -n $NAMESPACE # should return nothing
 ```
 
 ### Configure volumes
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd "$GIT_REPO/helm/otc/chart"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-configured-volume.yaml
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ./example-values/values-configured-volume.yaml
 
 kubectl get pvc -n $NAMESPACE # assert capacity `4Gi` and storage class `ssd`
 ```
 
 ### Configure resources
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd "$GIT_REPO/helm/otc/chart"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-configured-resources.yaml
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ./example-values/values-configured-resources.yaml
 
 kubectl get deploy -o yaml -n $NAMESPACE # cpu 1 to 4, memory 1Gi to 8Gi
 ```
@@ -239,8 +239,8 @@ kubectl get deploy -o yaml -n $NAMESPACE # cpu 1 to 4, memory 1Gi to 8Gi
 
 ### Template
 ```shell
-cd "$GIT_REPO/helm/otc"
-helm template . --debug  --wait --namespace $NAMESPACE --values ../example-values/values-test.yaml
+cd "$GIT_REPO/helm/otc/chart"
+helm template . --debug  --wait --namespace $NAMESPACE --values ./example-values/values-test.yaml
 ```
 
 ### Cert manager logs
@@ -262,7 +262,7 @@ helm get values -n $NAMESPACE mkp-
 
 ### Uninstall testing chart
 ```shell
-cd "$GIT_REPO/helm/otc"
+cd "$GIT_REPO/helm/otc/chart"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 ```
 
@@ -275,11 +275,11 @@ helm uninstall --namespace $NAMESPACE mkp-
 ```shell
 helm uninstall --namespace $NAMESPACE mkp-
 
-cd "$GIT_REPO/helm/otc"
+cd "$GIT_REPO/helm/otc/chart"
 helm uninstall $RELEASE_NAME --wait --namespace $NAMESPACE
 
 # Render chart templates locally and display the output
-helm template . --debug  --wait --namespace $NAMESPACE --values ../example-values/values-test.yaml
+helm template . --debug  --wait --namespace $NAMESPACE --values ./example-values/values-test.yaml
 
-helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ../example-values/values-test.yaml
+helm install $RELEASE_NAME . --wait --namespace $NAMESPACE --values ./example-values/values-test.yaml
 ```
