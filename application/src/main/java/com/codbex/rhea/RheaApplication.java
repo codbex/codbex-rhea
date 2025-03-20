@@ -16,9 +16,12 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.client.RestTemplate;
 
 @EnableJpaAuditing
 @EnableJpaRepositories
@@ -27,9 +30,20 @@ import org.springframework.scheduling.annotation.EnableScheduling;
                 HibernateJpaAutoConfiguration.class, JdbcTemplateAutoConfiguration.class})
 @EnableScheduling
 public class RheaApplication {
+    private static long startedAt;
+
+    public static long getStartedAt() {
+        return startedAt;
+    }
 
     public static void main(String[] args) {
+        startedAt = System.currentTimeMillis();
+        System.out.println("------- Application is starting -------");
         SpringApplication.run(RheaApplication.class, args);
     }
 
+    @Bean
+    RestTemplate restTemplate(RestTemplateBuilder builder) {
+        return builder.build();
+    }
 }
