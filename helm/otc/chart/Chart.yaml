@@ -7,11 +7,11 @@ appVersion: 3.0.0-SNAPSHOT
 description: https://codbex.com/products/rhea
 home: https://github.com/codbex/codbex-rhea
 keywords:
-- low-code-platform
-- ide
-- web-ide
-- type-script
-- java-script
+  - low-code-platform
+  - ide
+  - web-ide
+  - type-script
+  - java-script
 maintainers:
 - name: codbex
   url: https://github.com/codbex
