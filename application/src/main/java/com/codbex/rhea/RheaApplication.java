@@ -21,14 +21,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.client.RestTemplate;
 
+@EnableScheduling
 @EnableJpaAuditing
 @EnableJpaRepositories
-@SpringBootApplication(scanBasePackages = {"com.codbex.rhea", "org.eclipse.dirigible.components"},
+@EnableTransactionManagement
+@SpringBootApplication(scanBasePackages = {"org.eclipse.dirigible"}, //
         exclude = {DataSourceAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class,
                 HibernateJpaAutoConfiguration.class, JdbcTemplateAutoConfiguration.class})
-@EnableScheduling
 public class RheaApplication {
     private static long startedAt;
 

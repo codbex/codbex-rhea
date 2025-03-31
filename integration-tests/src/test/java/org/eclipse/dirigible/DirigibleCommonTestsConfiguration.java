@@ -8,11 +8,13 @@
  * SPDX-FileCopyrightText: 2022 codbex or an codbex affiliate company and contributors
  * SPDX-License-Identifier: EPL-2.0
  */
-package com.codbex.rhea.ui.tests;
+package org.eclipse.dirigible;
 
-import org.eclipse.dirigible.tests.UserInterfaceIntegrationTest;
-import org.springframework.context.annotation.Import;
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.context.annotation.ComponentScan;
 
-@Import(TestConfigurations.class)
-public abstract class RheaIntegrationTest extends UserInterfaceIntegrationTest {
+@SpringBootConfiguration
+@ComponentScan(basePackages = {"org.eclipse.dirigible", "com.codbex"})
+class DirigibleCommonTestsConfiguration {
+    // this class is needed for the dirigible tests suite
 }

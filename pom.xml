@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.codbex.platform</groupId>
         <artifactId>codbex-platform-parent</artifactId>
-        <version>11.11.0</version>
+        <version>11.16.0</version>
     </parent>
 
     <name>codbex - rhea - parent</name>
@@ -55,6 +55,7 @@
         <module>application</module>
         <module>branding</module>
         <module>welcome</module>
+        <module>integration-tests</module>
     </modules>
 
     <properties>
@@ -174,6 +175,11 @@
             <dependency>
                 <groupId>com.codbex.rhea</groupId>
                 <artifactId>codbex-rhea-welcome</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.codbex.rhea</groupId>
+                <artifactId>codbex-rhea-application</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

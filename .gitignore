@@ -1,7 +1,6 @@
 target/
 bin/
 log/
-application/build/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -26,4 +25,5 @@ derby.log
 .idea
 logs/
 *.tgz
+**/build/reports
 **/ttyd.sh
