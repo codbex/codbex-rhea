@@ -15,7 +15,7 @@ on:
 run-name: 'version set to ${{ inputs.release-version }} for release'
 
 jobs:
-  main:
+  release:
     uses: codbex/codbex-infra/.github/workflows/platform-release.yaml@main
     with:
       platform-name: codbex-rhea
@@ -26,18 +26,18 @@ jobs:
       release-otc-helm-chart: true
       release-content: |
         ## codbex-rhea - ${{ inputs.release-version }}
-  
+        
         Modelling and Applications Generation Platform
-  
+        
         ## Deployment
-  
+        
         ```
         docker run --name codbex-rhea \
         --rm -p 8080:8080 -p 8081:8081 \
         ghcr.io/codbex/codbex-rhea:${{ inputs.release-version }}
         ```
-  
+        
         ## Access points:
-  
+        
         - [/services/web/ide/](http://localhost:8080/services/web/ide/) - Web IDE
     secrets: inherit
