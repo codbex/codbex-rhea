@@ -4,13 +4,13 @@
 
     <parent>
         <groupId>com.codbex.rhea</groupId>
-        <artifactId>codbex-rhea-parent</artifactId>
+        <artifactId>codbex-rhea-components-parent</artifactId>
         <version>3.0.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <name>codbex - rhea - welcome</name>
-    <artifactId>codbex-rhea-welcome</artifactId>
+    <artifactId>codbex-rhea-components-ui-welcome</artifactId>
     <packaging>jar</packaging>
 
 </project>
