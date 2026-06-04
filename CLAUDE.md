@@ -4,9 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Rhea is a **codbex "Edition"** — a thin distribution that packages [Eclipse Dirigible](https://github.com/eclipse/dirigible) into a runnable Spring Boot application. It contains almost no business logic of its own; it assembles Dirigible components (entity/forms modeling, IDE, engines, editors) via Maven dependencies and applies codbex branding plus a few UI overrides. Rhea's focus is **Entities, Forms and Reports modeling** for Model Driven Architecture development.
-
-Rhea is one of a family of codbex Editions ([codbex.com/products](https://www.codbex.com/products/)), each a different curated slice of the same platform — e.g. **Atlas** (all-in-one), **Helios** (API development), **Hades** (database management), **Oceanus** (CMS/document management), **Hyperion** (BPM), **Iapetus** (integration/ETL), **Kronos** (XS/ABAP compatibility), **Phoebe** (Airflow-based data workflows). They differ almost entirely in *which* components their `application/pom.xml` includes; the structure and build conventions described below are shared across the family.
+Rhea ([codbex.com/products](https://www.codbex.com/products/)) is a **codbex "Edition"** — a thin distribution that packages [Eclipse Dirigible](https://github.com/eclipse/dirigible) into a runnable Spring Boot application. It contains almost no business logic of its own; it assembles Dirigible components via Maven dependencies and applies codbex branding plus a few UI overrides. Rhea's focus is **Entities, Forms and Reports modeling** for Model Driven Architecture development — the curated set of components in `application/pom.xml` (entity/forms/reports editors, the IDE, engines, and templates) reflects that focus.
 
 Inheritance chain: `codbex-platform-parent` (the `com.codbex.platform` parent POM, currently 12.89.0) → `codbex-rhea-parent` (root `pom.xml`) → modules. Most build behavior, Maven profiles, plugin config, and dependency versions live in the **parent POM, not this repo** — when a build profile or plugin isn't defined here, it is inherited from the platform parent.
 
