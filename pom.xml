@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.codbex.platform</groupId>
         <artifactId>codbex-platform-parent</artifactId>
-        <version>14.14.0</version>
+        <version>14.17.0</version>
     </parent>
 
     <name>codbex - rhea - parent</name>
@@ -61,13 +61,6 @@
     <properties>
         <project.title>Rhea by codbex</project.title>
         <profile.content.phase>none</profile.content.phase>
-        <!--
-            Temporary override of the platform parent's dirigible.version. Rhea needs 14.16.0 for the
-            Intent Driven components (Builder shell, Monitoring shell, the Personal shell rename) and
-            because the AngularJS/TypeScript application templates were removed in that release.
-            Remove this property once codbex-platform-parent 14.16.0 (or later) is published.
-        -->
-        <dirigible.version>14.16.0</dirigible.version>
     </properties>
 
     <dependencies>
