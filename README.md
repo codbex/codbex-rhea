@@ -4,7 +4,10 @@
 [![Eclipse License](https://img.shields.io/badge/License-EPL%202.0-brightgreen.svg)](https://github.com/codbex/codbex-rhea/blob/main/LICENSE)
 [![Maven Central](https://img.shields.io/maven-central/v/com.codbex.rhea/codbex-rhea-application.svg)](https://central.sonatype.com/namespace/com.codbex.rhea)
 
-Rhea Edition contains entity and forms modeling standard components.
+Rhea Edition is the codbex vertical stack for **Modeling and Applications**. It contains the entity, forms and reports
+modeling components, the Intent Driven development techniques and tools (the `app.intent` engine, the Intent Editor and
+the conversational Builder shell), and the single application stack the generated applications run on - Harmonia UI on a
+client Java backend.
 
 It is good for Model Driven Architecture related development models.
 
