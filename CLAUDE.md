@@ -4,9 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Rhea ([codbex.com/products](https://www.codbex.com/products/)) is a **codbex "Edition"** — a thin distribution that packages [Eclipse Dirigible](https://github.com/eclipse/dirigible) into a runnable Spring Boot application. It contains almost no business logic of its own; it assembles Dirigible components via Maven dependencies and applies codbex branding plus a few UI overrides. Rhea's focus is **Entities, Forms and Reports modeling** for Model Driven Architecture development — the curated set of components in `application/pom.xml` (entity/forms/reports editors, the IDE, engines, and templates) reflects that focus.
+Rhea ([codbex.com/products](https://www.codbex.com/products/)) is a **codbex "Edition"** — a thin distribution that packages [Eclipse Dirigible](https://github.com/eclipse/dirigible) into a runnable Spring Boot application. It contains almost no business logic of its own; it assembles Dirigible components via Maven dependencies and applies codbex branding plus a few UI overrides. Rhea's focus is **Modeling and Applications** — Entities, Forms and Reports modeling for Model Driven Architecture development, plus the **Intent Driven** techniques and tools (the `app.intent` engine, the Intent Editor and the conversational Builder shell). The curated set of components in `application/pom.xml` reflects that focus.
 
-Inheritance chain: `codbex-platform-parent` (the `com.codbex.platform` parent POM, currently 12.89.0) → `codbex-rhea-parent` (root `pom.xml`) → modules. Most build behavior, Maven profiles, plugin config, and dependency versions live in the **parent POM, not this repo** — when a build profile or plugin isn't defined here, it is inherited from the platform parent.
+Inheritance chain: `codbex-platform-parent` (the `com.codbex.platform` parent POM, currently 14.14.0) → `codbex-rhea-parent` (root `pom.xml`) → modules. Most build behavior, Maven profiles, plugin config, and dependency versions live in the **parent POM, not this repo** — when a build profile or plugin isn't defined here, it is inherited from the platform parent.
+
+**Dirigible version.** The platform parent pins it through the `dirigible.version` property (parent releases track Dirigible releases 1:1). The root `pom.xml` currently **overrides** it to `14.16.0`, because parent 14.14.0 is the newest published one and Rhea needs 14.16.0 for the Intent Driven components (Builder shell, Monitoring shell, the Personal shell rename) and for the removal of the AngularJS/TypeScript application templates. Delete the override once `codbex-platform-parent` 14.16.0 or later is published.
 
 ## Build & run
 
@@ -55,9 +57,22 @@ The app activates `common,app-default` by default (`application.properties`). To
 
 - **`application/`** — the deliverable. `RheaApplication.java` is the Spring Boot entrypoint; it scans `org.eclipse.dirigible` and disables the default JDBC/JPA autoconfiguration (Dirigible manages its own datasources). The bulk of `application/pom.xml` is a curated list of `dirigible-components-*` dependencies that selects exactly which engines, editors, IDE views, menus, perspectives, and templates ship in this edition. **Adding/removing a platform feature = adding/removing a dependency here**, often paired with an `<exclusion>` to swap a Dirigible default for a codbex override (see below).
 - **`branding/`** — codbex branding resources (logo, favicon) served as a Dirigible project under `rhea-branding`. Branding values are wired in `application/src/main/resources/dirigible.properties`.
-- **`components/ui/`** — local overrides of stock Dirigible UI components, currently `menu-help` and `view-welcome`. The pattern: the application POM **excludes** the upstream component (e.g. `dirigible-components-ui-menu-help`, `dirigible-components-ui-view-welcome`) and depends on the codbex-rhea replacement instead. These are Dirigible "projects" (resources under `META-INF/dirigible/<guid>/`) using `.extension` files that hook into platform extension points like `platform-menus`.
+- **`components/ui/`** — local overrides of stock Dirigible UI components, currently `menu-help` and `view-welcome`. The pattern: the application POM **excludes** the upstream component (e.g. `dirigible-components-ui-menu-help`, `dirigible-components-ui-view-welcome`) and depends on the codbex-rhea replacement instead. These are Dirigible "projects" (resources under `META-INF/dirigible/<guid>/`) using `.extension` files that hook into platform extension points like `platform-menus`. Because they are **forks of upstream files**, diff them against the matching Dirigible module on every version bump — they drift silently (translations must live in `i18n/<locale>/*.json`, which is the only folder `platform-core/extension-services/locales.js` scans).
 - **`integration-tests/`** — browser-based integration tests extending `UserInterfaceIntegrationTest` from `dirigible-tests-framework`. Test classes end in `IT` and drive the running IDE via the `ide`/`browser` helpers.
 - **`helm/otc/`** — Helm chart for Kubernetes deployment (versioned separately from the app).
+
+## What this edition ships (the parts that matter)
+
+Pulled either explicitly or through the `dirigible-components-group-*` aggregators (`group-core`, `group-database`, `group-engines-core`, `group-api-platform`, `group-resources-ui`, `group-ide`, `group-ui`):
+
+- **Modeling** — the Entity Data Modeler (`.edm`/`.model`), Form Designer (`.form`), Report editor, Database Schema Modeler, CSVIM, BPMN editor.
+- **Intent Driven** — `engine-intent` (the `app.intent` parse / generate / AI agent endpoints), the Intent Editor (`ui-editor-intent`, via `group-ide`) and the conversational **Builder shell** (`resources-builder`, via `group-ui`).
+- **The single application stack** — Harmonia UI + client Java: `template-application-schema`, `-dao-java`, `-rest-java`, `-ui-harmonia-java`, `-events-java` and `template-form-builder-harmonia`. There is no AngularJS or TypeScript application stack any more (removed from Dirigible in 14.16.0), and the generated apps run on the Harmonia SPA shells (`resources-application`, `application-core`).
+- **Client Java runtime** — `engine-java` + `data-store-java` + `api-modules-java` (the `org.eclipse.dirigible.sdk.*` SDK the generated code compiles against).
+- **Document output** — `engine-document` (`.print` → XSL-FO → PDF) and `engine-numbering` (`.numbers` document numbering).
+- **Shells and operations** — Home launchpad, Application, Personal, Partner, Administration, **Monitoring**, Inbox and Documents shells (all via `group-ui`), plus the Workbench IDE.
+
+Deliberately not included (add a dependency if an edition needs it): Camel/integrations engine, FTP/SFTP, Python, native apps, the S3/SharePoint CMS backends, `data-processes` (schema import/export processes) and the JS/TS starter templates.
 
 ## How customization works (the mental model)
 

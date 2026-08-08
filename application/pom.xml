@@ -62,6 +62,16 @@
             <artifactId>dirigible-components-group-database</artifactId>
             <type>pom</type>
         </dependency>
+        <!-- TypeScript @Entity decorators -> Hibernate -->
+        <dependency>
+            <groupId>org.eclipse.dirigible</groupId>
+            <artifactId>dirigible-components-data-store</artifactId>
+        </dependency>
+        <!-- Java @Entity annotations -> Hibernate (the generated application persistence layer) -->
+        <dependency>
+            <groupId>org.eclipse.dirigible</groupId>
+            <artifactId>dirigible-components-data-store-java</artifactId>
+        </dependency>
 
         <!-- Engine -->
         <dependency>
@@ -122,6 +132,26 @@
             <groupId>org.eclipse.dirigible</groupId>
             <artifactId>dirigible-components-engine-cms-internal</artifactId>
         </dependency>
+        <!-- Intent Driven development: app.intent parse / generate / AI agent -->
+        <dependency>
+            <groupId>org.eclipse.dirigible</groupId>
+            <artifactId>dirigible-components-engine-intent</artifactId>
+        </dependency>
+        <!-- Client Java runtime: the backend of the generated applications -->
+        <dependency>
+            <groupId>org.eclipse.dirigible</groupId>
+            <artifactId>dirigible-components-engine-java</artifactId>
+        </dependency>
+        <!-- Printable business documents: .print -> XSL-FO -> PDF -->
+        <dependency>
+            <groupId>org.eclipse.dirigible</groupId>
+            <artifactId>dirigible-components-engine-document</artifactId>
+        </dependency>
+        <!-- First class document numbering: .numbers -->
+        <dependency>
+            <groupId>org.eclipse.dirigible</groupId>
+            <artifactId>dirigible-components-engine-numbering</artifactId>
+        </dependency>
 
         <!-- UI Frontend -->
         <dependency>
@@ -155,6 +185,11 @@
         <dependency>
             <groupId>org.eclipse.dirigible</groupId>
             <artifactId>dirigible-components-api-cms</artifactId>
+        </dependency>
+        <!-- The client Java SDK (org.eclipse.dirigible.sdk.*) the generated Java code compiles against -->
+        <dependency>
+            <groupId>org.eclipse.dirigible</groupId>
+            <artifactId>dirigible-components-api-modules-java</artifactId>
         </dependency>
 
         <!-- Resources -->
@@ -534,41 +569,34 @@
             <groupId>org.eclipse.dirigible</groupId>
             <artifactId>dirigible-components-template-websocket</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.eclipse.dirigible</groupId>
-            <artifactId>dirigible-components-template-application-angular</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.dirigible</groupId>
-            <artifactId>dirigible-components-template-application-dao</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.dirigible</groupId>
-            <artifactId>dirigible-components-template-application-data</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.dirigible</groupId>
-            <artifactId>dirigible-components-template-application-feed</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.dirigible</groupId>
-            <artifactId>dirigible-components-template-application-odata</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.dirigible</groupId>
-            <artifactId>dirigible-components-template-application-rest</artifactId>
-        </dependency>
+        <!-- The single application stack: Harmonia UI + client Java backend -->
         <dependency>
             <groupId>org.eclipse.dirigible</groupId>
             <artifactId>dirigible-components-template-application-schema</artifactId>
         </dependency>
         <dependency>
             <groupId>org.eclipse.dirigible</groupId>
-            <artifactId>dirigible-components-template-application-ui-angular</artifactId>
+            <artifactId>dirigible-components-template-application-dao-java</artifactId>
         </dependency>
         <dependency>
             <groupId>org.eclipse.dirigible</groupId>
-            <artifactId>dirigible-components-template-form-builder-angularjs</artifactId>
+            <artifactId>dirigible-components-template-application-rest-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.dirigible</groupId>
+            <artifactId>dirigible-components-template-application-ui-harmonia-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.dirigible</groupId>
+            <artifactId>dirigible-components-template-application-events-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.dirigible</groupId>
+            <artifactId>dirigible-components-template-form</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.dirigible</groupId>
+            <artifactId>dirigible-components-template-form-builder-harmonia</artifactId>
         </dependency>
 
     </dependencies>
