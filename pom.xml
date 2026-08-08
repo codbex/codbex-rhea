@@ -67,7 +67,7 @@
             because the AngularJS/TypeScript application templates were removed in that release.
             Remove this property once codbex-platform-parent 14.16.0 (or later) is published.
         -->
-        <dirigible.version>14.16.0</dirigible.version>
+        <dirigible.version>14.17.0</dirigible.version>
     </properties>
 
     <dependencies>
