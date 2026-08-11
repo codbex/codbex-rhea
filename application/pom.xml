@@ -132,6 +132,11 @@
             <groupId>org.eclipse.dirigible</groupId>
             <artifactId>dirigible-components-engine-cms-internal</artifactId>
         </dependency>
+        <!-- S3-backed CMS: cloud deployments select it via DIRIGIBLE_CMS_PROVIDER=cms-provider-s3 -->
+        <dependency>
+            <groupId>org.eclipse.dirigible</groupId>
+            <artifactId>dirigible-components-engine-cms-s3</artifactId>
+        </dependency>
         <!-- Intent Driven development: app.intent parse / generate / AI agent -->
         <dependency>
             <groupId>org.eclipse.dirigible</groupId>
