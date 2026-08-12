@@ -214,6 +214,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- Harmonia Database shell at /services/web/database - not part of group-resources-ui,
+             so it has to be pulled in explicitly. Its shell runtime (application-core, which
+             carries the codbex__harmonia webjar) does come from group-resources-ui above. -->
+        <dependency>
+            <groupId>org.eclipse.dirigible</groupId>
+            <artifactId>dirigible-components-resources-database</artifactId>
+        </dependency>
 
         <!-- IDE Platform -->
         <dependency>
