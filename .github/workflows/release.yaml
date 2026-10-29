@@ -33,7 +33,7 @@ jobs:
         
         ```
         docker run --name codbex-rhea \
-        --rm -p 8080:8080 -p 8081:8081 \
+        --rm -p 8080:8080 \
         ghcr.io/codbex/codbex-rhea:${{ inputs.release-version }}
         ```
         
