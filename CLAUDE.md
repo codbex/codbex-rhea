@@ -89,4 +89,4 @@ When you need to understand actual feature behavior (an editor, an engine, the e
 ```shell
 cd application && docker build . --tag ghcr.io/codbex/codbex-rhea:latest
 ```
-The image (`application/Dockerfile`) is based on `amazoncorretto:21-alpine` and bundles `nodejs`/`npm`, `esbuild`, and `typescript` because the TypeScript engine compiles project sources at runtime.
+The image (`application/Dockerfile`) is based on `amazoncorretto:21-alpine` and bundles `ttyd`, `git` and the fonts. It has no Node.js: Rhea ships no server-side JavaScript/TypeScript engine.

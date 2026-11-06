@@ -16,6 +16,11 @@
 
     <dependencies>
 
+        <!--
+            No server-side JavaScript/TypeScript (GraalJS): group-javascript is not bundled, and the JavaScript
+            SDK (api-modules-javascript), which many Dirigible modules declare, is excluded wherever it comes in.
+        -->
+
         <dependency>
             <groupId>com.codbex.rhea</groupId>
             <artifactId>codbex-rhea-branding</artifactId>
@@ -71,6 +76,12 @@
         <dependency>
             <groupId>org.eclipse.dirigible</groupId>
             <artifactId>dirigible-components-data-store-java</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.dirigible</groupId>
+                    <artifactId>dirigible-components-api-modules-javascript</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- Engine -->
@@ -78,15 +89,6 @@
             <groupId>org.eclipse.dirigible</groupId>
             <artifactId>dirigible-components-group-engines-core</artifactId>
             <type>pom</type>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.dirigible</groupId>
-            <artifactId>dirigible-components-group-javascript</artifactId>
-            <type>pom</type>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.dirigible</groupId>
-            <artifactId>dirigible-components-engine-typescript</artifactId>
         </dependency>
         <dependency>
             <groupId>org.eclipse.dirigible</groupId>
@@ -102,10 +104,6 @@
         </dependency>
         <dependency>
             <groupId>org.eclipse.dirigible</groupId>
-            <artifactId>dirigible-components-engine-template-javascript</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.dirigible</groupId>
             <artifactId>dirigible-components-engine-bpm</artifactId>
         </dependency>
         <dependency>
@@ -115,6 +113,12 @@
         <dependency>
             <groupId>org.eclipse.dirigible</groupId>
             <artifactId>dirigible-components-engine-jobs</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.dirigible</groupId>
+                    <artifactId>dirigible-components-api-modules-javascript</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.eclipse.dirigible</groupId>
@@ -123,6 +127,12 @@
         <dependency>
             <groupId>org.eclipse.dirigible</groupId>
             <artifactId>dirigible-components-engine-websockets</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.dirigible</groupId>
+                    <artifactId>dirigible-components-api-modules-javascript</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.eclipse.dirigible</groupId>
@@ -146,16 +156,34 @@
         <dependency>
             <groupId>org.eclipse.dirigible</groupId>
             <artifactId>dirigible-components-engine-intent</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.dirigible</groupId>
+                    <artifactId>dirigible-components-api-modules-javascript</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- Client Java runtime: the backend of the generated applications -->
         <dependency>
             <groupId>org.eclipse.dirigible</groupId>
             <artifactId>dirigible-components-engine-java</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.dirigible</groupId>
+                    <artifactId>dirigible-components-api-modules-javascript</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- Printable business documents: .print -> XSL-FO -> PDF -->
         <dependency>
             <groupId>org.eclipse.dirigible</groupId>
             <artifactId>dirigible-components-engine-document</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.dirigible</groupId>
+                    <artifactId>dirigible-components-api-modules-javascript</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- First class document numbering: .numbers -->
         <dependency>
@@ -191,15 +219,33 @@
             <groupId>org.eclipse.dirigible</groupId>
             <artifactId>dirigible-components-group-api-platform</artifactId>
             <type>pom</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.dirigible</groupId>
+                    <artifactId>dirigible-components-api-modules-javascript</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.eclipse.dirigible</groupId>
             <artifactId>dirigible-components-api-cms</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.dirigible</groupId>
+                    <artifactId>dirigible-components-api-modules-javascript</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- The client Java SDK (org.eclipse.dirigible.sdk.*) the generated Java code compiles against -->
         <dependency>
             <groupId>org.eclipse.dirigible</groupId>
             <artifactId>dirigible-components-api-modules-java</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.dirigible</groupId>
+                    <artifactId>dirigible-components-api-modules-javascript</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- Resources -->
