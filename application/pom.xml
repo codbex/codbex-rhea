@@ -162,6 +162,14 @@
             <groupId>org.eclipse.dirigible</groupId>
             <artifactId>dirigible-components-engine-numbering</artifactId>
         </dependency>
+        <!--
+            Issues: the backend of the shells' Issues page and "Report an issue" (/services/issues).
+            Without it the shells hide both.
+        -->
+        <dependency>
+            <groupId>org.eclipse.dirigible</groupId>
+            <artifactId>dirigible-components-engine-issues</artifactId>
+        </dependency>
 
         <!-- UI Frontend -->
         <dependency>
