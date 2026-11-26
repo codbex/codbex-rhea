@@ -72,6 +72,12 @@
             <groupId>org.eclipse.dirigible</groupId>
             <artifactId>dirigible-components-data-store-java</artifactId>
         </dependency>
+        <!-- The server side of the shell's Settings -> Data export (/services/data/tenant-export, off unless
+             DIRIGIBLE_TENANT_EXPORT_ENABLED=true); the schema import/export processes come with it -->
+        <dependency>
+            <groupId>org.eclipse.dirigible</groupId>
+            <artifactId>dirigible-components-data-processes</artifactId>
+        </dependency>
 
         <!-- Engine -->
         <dependency>

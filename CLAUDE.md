@@ -71,8 +71,9 @@ Pulled either explicitly or through the `dirigible-components-group-*` aggregato
 - **Client Java runtime** — `engine-java` + `data-store-java` + `api-modules-java` (the `org.eclipse.dirigible.sdk.*` SDK the generated code compiles against).
 - **Document output** — `engine-document` (`.print` → XSL-FO → PDF) and `engine-numbering` (`.numbers` document numbering).
 - **Shells and operations** — Home launchpad, Application, Personal, Partner, Administration, **Monitoring**, Inbox and Documents shells (all via `group-ui`), plus the Workbench IDE.
+- **Tenant data export** — `data-processes`: the server side of the application shell's Settings → Data export (`/services/data/tenant-export`), which a deployment turns on with `DIRIGIBLE_TENANT_EXPORT_ENABLED=true` (off by default). The shell's page comes with `application-core` and stays hidden while the endpoint is absent or off. The module's schema import/export processes come with it.
 
-Deliberately not included (add a dependency if an edition needs it): Camel/integrations engine, FTP/SFTP, Python, native apps, the S3/SharePoint CMS backends, `data-processes` (schema import/export processes) and the JS/TS starter templates.
+Deliberately not included (add a dependency if an edition needs it): Camel/integrations engine, FTP/SFTP, Python, native apps, the S3/SharePoint CMS backends and the JS/TS starter templates.
 
 ## How customization works (the mental model)
 
